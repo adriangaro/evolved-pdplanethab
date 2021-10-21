@@ -1,0 +1,304 @@
+tec_pdplanethab_set_industrial_focus_flags =  {
+	if = {
+		limit = {
+			has_designation = col_dome_factory
+		}
+		set_planet_flag = factory_planet
+	}
+	else_if = {
+		limit = {
+			has_designation = col_dome_foundry
+		}
+		set_planet_flag = foundry_planet
+	}
+}
+
+tec_pdplanethab_convert_district = {
+	export_trigger_value_to_variable = {
+		trigger = num_districts
+		parameters = {
+			type = $DISTRICT1$
+		}
+		variable = convert_districts_variable
+	}
+	divide_variable = { which = convert_districts_variable value = $DIVIDE$ }
+	floor_variable = convert_districts_variable
+	while = {
+		count = convert_districts_variable
+		add_district = $DISTRICT2$
+	}
+	clear_variable = convert_districts_variable
+}
+
+tec_pdplanethab_clear_district = {
+	export_trigger_value_to_variable = {
+		trigger = num_districts
+		parameters = {
+			type = $DISTRICT$
+		}
+		variable = clear_districts_variable
+	}
+	while = {
+		count = clear_districts_variable
+		remove_district = $DISTRICT$
+	}
+	clear_variable = clear_districts_variable
+}
+
+
+
+tec_pdplanethab_set_ecu_industrial_districts = {
+	if = {
+		limit = {
+			has_planet_flag = factory_planet
+		}
+		remove_planet_flag = factory_planet
+		swap_districts_effect = {
+			DISTRICT1 = district_tec_hab_arcology_foundry
+			DISTRICT2 = district_tec_hab_arcology_industry
+		}
+	}
+	else_if = {
+		limit = {
+			has_planet_flag = foundry_planet
+		}
+		remove_planet_flag = foundry_planet
+	}
+	else = {
+		split_districts_effect = {
+			DISTRICT1 = district_tec_hab_arcology_foundry
+			DISTRICT2 = district_tec_hab_arcology_industry
+		}
+	}
+}
+
+tec_pdplanethab_convert_housing_to_ecu_housing = {
+	# Housing conversion
+	if = {
+		limit = {
+			exists = from
+			from = {
+				OR = {
+					is_megacorp = yes
+					tec_is_trade_gestalt = yes
+				}
+			}
+		}
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_housing
+			DISTRICT2 = district_tec_arcology_trade 
+			DIVIDE = 1.5
+		}
+	}
+	else = {
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_housing
+			DISTRICT2 = district_arcology_housing
+			DIVIDE = 1.5
+		}
+	}
+	
+	tec_pdplanethab_clear_district = {
+		DISTRICT = district_pdhab_housing
+	}
+
+	# Trade conversion
+
+	if = {
+		limit = {
+			exists = from
+			from = {
+				OR = {
+					is_megacorp = yes
+					tec_is_trade_gestalt = yes
+				}
+			}
+		}
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_trade
+			DISTRICT2 = district_tec_arcology_trade
+			DIVIDE = 2
+		}
+	}
+	else = {
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_trade
+			DISTRICT2 = district_arcology_housing
+			DIVIDE = 2
+		}
+	}
+	
+	tec_pdplanethab_clear_district = {
+		DISTRICT = district_tec_hab_arcology_trade
+	}
+
+	# Maintenance conversion
+
+	if = {
+		limit = {
+			exists = from
+			from = {
+				OR = {
+					is_megacorp = yes
+					tec_is_trade_gestalt = yes
+				}
+			}
+		}
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_maintenance
+			DISTRICT2 = district_tec_arcology_trade
+			DIVIDE = 2
+		}
+	}
+	else = {
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_maintenance
+			DISTRICT2 = district_arcology_housing
+			DIVIDE = 2
+		}
+	}
+	
+	tec_pdplanethab_clear_district = {
+		DISTRICT = district_tec_hab_arcology_maintenance
+	}
+
+}
+
+
+tec_pdplanethab_convert_leisure_to_ecu_leisure = {
+	# Leisure conversion district_tec_hab_arcology_leisure
+	if = {
+		limit = {
+			exists = from
+			from = {
+				is_regular_empire = no
+				NOT = {
+					has_valid_civic = civic_machine_servitor
+				}
+			}
+		}
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_leisure
+			DISTRICT2 = district_tec_arcology_unity_gestalt
+			DIVIDE = 2
+		}
+	}
+	else_if = {
+		limit = {
+			exists = from
+			from = {
+				is_regular_empire = yes
+				is_spiritualist = yes
+			}
+		}
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_leisure
+			DISTRICT2 = district_tec_arcology_faith
+			DIVIDE = 2
+		}
+	}
+	else_if = {
+		limit = {
+			exists = from
+			from = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_leisure
+			DISTRICT2 = district_arcology_organic_housing
+			DIVIDE = 2
+		}
+	}
+	else = {
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_leisure
+			DISTRICT2 = district_arcology_leisure
+			DIVIDE = 2
+		}
+	}
+	
+	tec_pdplanethab_clear_district = {
+		DISTRICT = district_tec_hab_arcology_leisure
+	}
+}
+
+tec_pdplanethab_ensure_planet_size = {
+	export_trigger_value_to_variable = {
+		trigger = planet_size
+		variable = initial_size
+	}
+	set_planet_size = 1000
+}
+
+tec_pdplanethab_ensure_planet_size_end = {
+	set_planet_size = initial_size
+	clear_variable = initial_size
+}
+
+tec_ecu_planet_entity = {
+	#Included Planetary diversity things
+	IF = {
+		limit = { 
+			owner = { 
+				NOT = { 
+					has_trait = trait_pc_aquatic_preference 
+				} 
+			} 
+		}
+		set_planet_entity = {
+			entity = "city_planet_entity"
+			graphical_culture = owner
+		}
+	}
+	IF = {
+		limit = { 
+			owner = { 
+				has_trait = trait_pc_aquatic_preference 
+			} 
+		}
+		set_planet_entity = {
+			entity = "aquaticcity_planet_01_entity"
+			picture = "pc_aquaticcity"
+		}
+	}
+}
+
+tec_ecu_ecological_resolution = {
+	if = {
+				limit = {
+					OR = {
+						is_active_resolution = "resolution_ecology_environmental_control_board"
+						is_active_resolution = "resolution_ecology_paradise_initiative"
+					}
+				}
+				owner = {
+					set_timed_country_flag = { flag = resolution_breached_terraformed days = 3600 }
+				}
+			}
+}
+
+tec_pdplanethab_clear_habitat_specific_data = {
+	remove_planet_flag = tec_arcology_habitat
+	remove_planet_flag = tec_civil_habitat
+	remove_planet_flag = tec_industrial_habitat
+	
+	remove_modifier = tec_pm_arcology_habitat
+
+	remove_deposit = d_expanded_dome_system 
+	remove_deposit = d_expanded_dome_system
+	remove_deposit = d_expanded_dome_system_1
+	remove_deposit = d_expanded_dome_system_1
+
+	if = {
+		limit = { 
+			has_modifier = engineered_habitat
+		}
+		remove_modifier = engineered_habitat
+		add_modifier = {
+			modifier = engineered_weather
+		}
+	}
+	remove_building = building_hab_system_capital
+	add_building = building_system_capital
+}

@@ -1,0 +1,2315 @@
+@hab_cost = 500
+@hab_maintenance = 2
+
+district_pdhab_housing = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		uses_district_set = pdplanethab
+		#NOT = { is_planet_class = pc_pd_asteroid_hab }
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+
+	potential = {
+		uses_district_set = pdplanethab
+		#NOT = { is_planet_class = pc_pd_asteroid_hab }
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_city
+		district_nexus
+		district_hive
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		planet_housing_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		planet_housing_add = 3
+		planet_max_buildings_add = 0.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				OR = {
+					has_tradition = tr_tec_artifice_2
+					has_active_tradition = tr_tec_artifice_2_gestalt
+				}
+			}
+		}
+		planet_amenities_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_gestalt = yes
+				OR = {
+					has_tradition = tr_tec_artifice_2
+					has_active_tradition = tr_tec_artifice_2_gestalt
+				}
+			}
+		}
+		planet_amenities_no_happiness_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_active_tradition = tr_prosperity_public_works }
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_housing_1
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_housing_2
+				NOT = { has_valid_civic = civic_agrarian_idyll }
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_housing_2
+				is_gestalt = yes
+			}
+		}
+		modifier = {
+			job_maintenance_drone_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			job_maintenance_drone_add = 2
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_maintenance_drone_effect_desc
+	}
+}
+
+
+district_pdhab_industrial = {
+	icon = district_arcology_civilian_industry
+	base_buildtime = 240
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		uses_district_set = pdplanethab
+		#NOT = { is_planet_class = pc_pd_asteroid_hab }
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+
+	potential = {
+		uses_district_set = pdplanethab
+		#NOT = { is_planet_class = pc_pd_asteroid_hab }
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+
+	prerequisites = {
+		tech_basic_industry
+	}
+	
+	allow = {
+		NOT = { has_modifier = resort_colony }
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_industrial
+	}
+
+	resources = {
+		category = planet_districts_hab_industrial
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_edict = industrial_maintenance
+				}
+			}
+			energy = 2
+			
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+
+	# Traditions/tech
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_tradition = tr_tec_artifice_final_1
+					AND = {
+						is_crafter_empire = yes
+						has_origin = origin_void_dwellers
+					}
+				}
+			}
+		}
+		planet_max_buildings_add = 0.35
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tec_create_buildings_from_industrial = yes
+				has_tradition = tr_tec_artifice_final_1
+			}
+		}
+		planet_amenities_add = 2
+	}
+
+	# Indication
+	triggered_desc = {
+		trigger = {
+			exists = owner
+		}
+		text = tec_planet_spec_change_jobs
+	}
+
+	# Base jobs
+	triggered_planet_modifier = {	# regular artisans
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				is_crafter_empire = no
+			}
+		}
+		modifier = {
+			job_artisan_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				is_crafter_empire = yes
+			}
+		}
+		modifier = {
+			job_artificer_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {	# regular foundry
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				is_catalytic_empire = no
+			}
+		}
+		modifier = {
+			job_foundry_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				is_catalytic_empire = yes
+			}
+		}
+		modifier = {
+			job_catalytic_technician_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {	# regular hive foundry
+		potential = {
+			exists = owner
+			owner = { 
+				is_hive_empire = yes 
+				tec_is_cybernetic_hive = no
+				is_catalytic_empire = no
+			}
+		}
+		modifier = {
+			job_alloy_drone_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_hive_empire = yes 
+				tec_is_cybernetic_hive = no
+				is_catalytic_empire = yes
+			}
+		}
+		modifier = {
+			job_catalytic_drone_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {	# Machine foundry
+		potential = {
+			exists = owner
+			owner = { 
+				is_machine_empire = yes 
+				is_catalytic_empire = no
+			}
+		}
+		modifier = {
+			job_fabricator_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_machine_empire = yes 
+				is_catalytic_empire = yes
+			}
+		}
+		modifier = {
+			job_catalytic_drone_add = 2
+		}
+	}
+
+	# Designation Job Changes
+	triggered_planet_modifier = {	# Foundry regular
+		potential = {
+			has_designation = col_dome_foundry
+			exists = owner
+			owner = { 
+				is_regular_empire = yes 
+				is_crafter_empire = no
+			}
+		}
+		modifier = {
+			job_artisan_add = -1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_designation = col_dome_foundry
+			exists = owner
+			owner = { 
+				is_regular_empire = yes 
+				is_crafter_empire = yes
+			}
+		}
+		modifier = {
+			job_artificer_add = -1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_designation = col_dome_foundry
+			exists = owner
+			owner = { 
+				is_regular_empire = yes 
+				is_catalytic_empire = no
+			}
+		}
+		modifier = {
+			job_foundry_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_designation = col_dome_foundry
+			exists = owner
+			owner = { 
+				is_regular_empire = yes 
+				is_catalytic_empire = yes
+			}
+		}
+		modifier = {
+			job_catalytic_technician_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {	# factory regular
+		potential = {
+			has_designation = col_dome_factory
+			exists = owner
+			owner = { 
+				is_regular_empire = yes 
+				is_catalytic_empire = no
+			}
+		}
+		modifier = {
+			job_foundry_add = -1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_designation = col_dome_factory
+			exists = owner
+			owner = { 
+				is_regular_empire = yes 
+				is_catalytic_empire = yes
+			}
+		}
+		modifier = {
+			job_catalytic_technician_add = -1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_designation = col_dome_factory
+			exists = owner
+			owner = { 
+				is_regular_empire = yes 
+				is_crafter_empire = no
+			}
+		}
+		modifier = {
+			job_artisan_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_designation = col_dome_factory
+			exists = owner
+			owner = { 
+				is_regular_empire = yes 
+				is_crafter_empire = yes
+			}
+		}
+		modifier = {
+			job_artificer_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {	# Factory Machine
+		potential = {
+			OR = {
+				AND = {
+					has_designation = col_dome_factory
+					exists = owner
+					owner = {
+						is_machine_empire = yes
+						country_uses_consumer_goods = yes
+						is_catalytic_empire = no
+					}
+				}
+				AND = {
+					OR = {
+						has_building = building_factory_1
+						has_building = building_factory_2
+						has_building = building_factory_3
+					}
+					exists = owner
+					owner = {
+						is_machine_empire = yes
+						is_catalytic_empire = no
+						#	tec_is_organic_coexist_machine = no	# Exception not necessary! for now
+						has_ethic = ethic_gestalt_empathy
+						has_technology = tech_tec_gestalt_friendship
+					}
+				}
+			}
+		}
+		modifier = {
+			job_artisan_drone_add = 1
+			job_fabricator_add = -1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				AND = {
+					OR = {
+						has_designation = col_dome_factory
+					}
+					exists = owner
+					owner = {
+						is_machine_empire = yes
+						country_uses_consumer_goods = yes
+						is_catalytic_empire = yes
+					}
+				}
+				AND = {
+					OR = {
+						has_building = building_factory_1
+						has_building = building_factory_2
+						has_building = building_factory_3
+					}
+					exists = owner
+					owner = {
+						is_machine_empire = yes
+						is_catalytic_empire = yes
+						#	tec_is_organic_coexist_machine = no	# Exception not necessary! for now
+						has_ethic = ethic_gestalt_empathy
+						has_technology = tech_tec_gestalt_friendship
+					}
+				}
+			}
+		}
+		modifier = {
+			job_artisan_drone_add = 1
+			job_catalytic_drone_add = -1
+		}
+	}
+
+	triggered_planet_modifier = {	# Hive factory
+		potential = {
+			OR = {
+				AND = {
+					has_designation = col_dome_factory
+					exists = owner
+					owner = {
+						is_hive_empire = yes
+						country_uses_consumer_goods = yes
+						is_catalytic_empire = no
+					}
+				}
+				AND = {
+					OR = {
+						has_building = building_factory_1
+						has_building = building_factory_2
+						has_building = building_factory_3
+					}
+					exists = owner
+					owner = {
+						is_hive_empire = yes
+						is_catalytic_empire = no
+						tec_is_cybernetic_hive = no	# EXCEPTION!!
+						has_ethic = ethic_gestalt_empathy
+						has_technology = tech_tec_gestalt_friendship
+					}
+				}
+			}
+		}
+		modifier = {
+			job_artisan_drone_add = 1
+			job_alloy_drone_add = -1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				AND = {
+					has_designation = col_dome_factory
+					exists = owner
+					owner = {
+						is_hive_empire = yes
+						country_uses_consumer_goods = yes
+						is_catalytic_empire = yes
+					}
+				}
+				AND = {
+					OR = {
+						has_building = building_factory_1
+						has_building = building_factory_2
+						has_building = building_factory_3
+					}
+					exists = owner
+					owner = {
+						is_hive_empire = yes
+						is_catalytic_empire = yes
+						tec_is_cybernetic_hive = no	# EXCEPTION!!
+						has_ethic = ethic_gestalt_empathy
+						has_technology = tech_tec_gestalt_friendship
+					}
+				}
+			}
+		}
+		modifier = {
+			job_artisan_drone_add = 1
+			job_catalytic_drone_add = -1
+		}
+	}
+
+
+	# Special hives
+	triggered_planet_modifier = {	# Cybernetic will always generate 1 cg job
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+				tec_is_cybernetic_hive = yes
+				is_catalytic_empire = no
+			}
+		}
+		modifier = {
+			job_artisan_drone_add = 1
+			job_alloy_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+				tec_is_cybernetic_hive = yes
+				is_catalytic_empire = yes
+			}
+		}
+		modifier = {
+			job_artisan_drone_add = 1
+			job_catalytic_drone_add = 1
+		}
+	}	
+
+	# Desc
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_crafter_empire = no
+			}
+		}
+		text = job_artisan_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_crafter_empire = yes
+			}
+		}
+		text = job_artificer_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				is_catalytic_empire = no
+			}
+		}
+		text = job_foundry_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				is_catalytic_empire = yes
+			}
+		}
+		text = job_catalytic_technician_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+				is_catalytic_empire = no
+			}
+		}
+		text = job_fabricator_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+				is_catalytic_empire = no
+			}
+		}
+		text = job_alloy_drone_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_gestalt = yes
+				country_uses_consumer_goods = yes
+			}
+		}
+		text = job_artisan_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_gestalt = yes
+				is_catalytic_empire = yes
+			}
+		}
+		text = job_catalytic_drone_effect_desc
+	}
+
+	# Machine edict
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+				has_edict = industrial_maintenance
+			}
+		}
+		modifier = {
+			job_maintenance_drone_add = 1
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+				has_edict = industrial_maintenance
+			}
+		}
+		text = job_maintenance_drone_effect_desc
+	}
+
+	# Extra jobs modifier
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_regular_empire = yes
+				is_catalytic_empire = no 
+			}
+			has_modifier = pdhabvolcanicminerals
+		}
+		modifier = {
+			job_foundry_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_machine_empire = yes
+				is_catalytic_empire = no
+		}
+			has_modifier = pdhabvolcanicminerals
+		}
+		modifier = {
+			job_fabricator_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_hive_empire = yes
+				is_catalytic_empire = no
+			}
+			has_modifier = pdhabvolcanicminerals
+		}
+		modifier = {
+			job_alloy_drone_add = 1
+		}
+	}
+}
+
+
+district_pdhab_food = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		uses_district_set = pdplanethab
+		has_planet_flag = pd_farming_hab
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+	
+	potential = {
+		uses_district_set = pdplanethab
+		has_planet_flag = pd_farming_hab
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_farming
+		district_farming_uncapped
+	}
+
+	resources = {
+		category = planet_districts_hab_food
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}
+
+		# New production
+		produces = {
+			food = 6
+		}
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = advanced_habitat
+				}
+			}
+			food = 2
+		}
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = advanced_habitat_2
+				}
+			}
+			food = 4
+		}
+
+		produces = {
+			trigger = {
+				planet = {
+					has_active_building = building_food_processing_facility
+				}
+			}
+			food = 1
+		}
+		produces = {
+			trigger = {
+				planet = {
+					has_active_building = building_food_processing_center
+				}
+			}
+			food = 2
+		}
+		produces = {
+			trigger = {
+				planet = {
+					has_active_building = building_food_processing_complex
+				}
+			}
+			food = 3
+		}
+
+		# techs dont get visualized on the district production...
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_eco_simulation
+				}
+			}
+			food = 1
+		}
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_gene_crops
+				}
+			}
+			food = 1
+		}
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_nano_vitality_crops
+				}
+			}
+			food = 1
+		}
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_nutrient_replication
+				}
+			}
+			food = 1
+		}
+	}
+
+	# Indications
+	triggered_desc = {
+		trigger = {
+			planet = {
+				NOT = {
+					has_planet_flag = advanced_habitat_2
+				}
+			}
+		}
+		text = tec_upgradeable_district_habitat
+	}
+	triggered_desc = {
+		text = tec_building_affect_district_habitat
+	}
+
+	# Housing
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		planet_housing_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		planet_housing_add = 1
+	}
+
+	# Jobs
+	triggered_planet_modifier = {	#Regular
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		modifier = {
+			job_farmer_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		modifier = {
+			job_farmer_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {	# Fe
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		modifier = {
+			job_fe_acolyte_farm_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		modifier = {
+			job_fe_acolyte_farm_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {	# Machine
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		job_agri_drone_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		job_agri_drone_add = 1
+	}
+
+	triggered_planet_modifier = {	# Hive
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		job_agri_drone_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		job_agri_drone_add = 2
+	}
+
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_agri_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_farmer_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		text = job_fe_acolyte_farm_effect_desc
+	}
+
+	ai_resource_production = {
+		food = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_pdhab_energy = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		uses_district_set = pdplanethab
+		OR = {
+			has_planet_flag = pd_energy_hab
+			AND = {
+				exists = from
+				from = { is_gestalt = yes }
+			}
+		}
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+
+	potential = {
+		uses_district_set = pdplanethab
+		OR = {
+			has_planet_flag = pd_energy_hab
+			AND = {
+				exists = owner
+				owner = { is_gestalt = yes }
+			}
+		}
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_generator
+		district_generator_uncapped
+		district_pdhab_commercial
+	}
+
+	resources = {
+		category = planet_districts_hab_energy
+		cost = {
+			minerals = @hab_cost
+		}
+	#	upkeep = {
+	#		energy = @hab_maintenance
+	#	}
+
+		# New production
+		produces = {
+			energy = 6
+		}
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = advanced_habitat
+				}
+			}
+			energy = 2
+		}
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = advanced_habitat_2
+				}
+			}
+			energy = 4
+		}
+
+		produces = {
+			trigger = {
+				planet = {
+					has_active_building = building_energy_grid
+				}
+			}
+			energy = 1
+		}
+		produces = {
+			trigger = {
+				planet = {
+					has_active_building = building_energy_nexus
+				}
+			}
+			energy = 2
+		}
+		produces = {
+			trigger = {
+				planet = {
+					has_active_building = building_energy_complex
+				}
+			}
+			energy = 3
+		}
+
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_power_plant_2
+				}
+			}
+			energy = 1
+		}
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_power_plant_3
+				}
+			}
+			energy = 1
+		}
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_power_plant_4
+				}
+			}
+			energy = 1
+		}
+	}
+
+	# Indications
+	triggered_desc = {
+		trigger = {
+			planet = {
+				NOT = {
+					has_planet_flag = advanced_habitat_2
+				}
+			}
+		}
+		text = tec_upgradeable_district_habitat
+	}
+	triggered_desc = {
+		text = tec_building_affect_district_habitat
+	}
+
+	# Housing
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		planet_housing_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		planet_housing_add = 1
+	}
+	
+
+	# Jobs
+	triggered_planet_modifier = {	#Regular
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		modifier = {
+			job_technician_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		modifier = {
+			job_technician_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {	# Fe
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		modifier = {
+			job_fe_acolyte_generator_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		modifier = {
+			job_fe_acolyte_generator_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {	# Machine
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		job_technician_drone_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		job_technician_drone_add = 1
+	}
+
+	triggered_planet_modifier = {	# Hive
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		job_technician_drone_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		job_technician_drone_add = 2
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_technician_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_technician_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		text = job_fe_acolyte_generator_effect_desc
+	}
+
+	ai_resource_production = {
+		energy = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+
+district_pdhab_mining = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		uses_district_set = pdplanethab
+		has_planet_flag = pd_mining_hab
+	}
+	
+	potential = {
+		uses_district_set = pdplanethab
+		has_planet_flag = pd_mining_hab
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_mining
+		district_mining_uncapped
+	}	
+
+	resources = {
+		category = planet_districts_hab_mining
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}
+
+		# New production
+		produces = {
+			minerals = 6
+		}
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = advanced_habitat
+				}
+			}
+			minerals = 2
+		}
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = advanced_habitat_2
+				}
+			}
+			minerals = 4
+		}
+
+		produces = {
+			trigger = {
+				planet = {
+					has_active_building = building_mineral_purification_plant
+				}
+			}
+			minerals = 1
+		}
+		produces = {
+			trigger = {
+				planet = {
+					has_active_building = building_mineral_purification_hub
+				}
+			}
+			minerals = 2
+		}
+		produces = {
+			trigger = {
+				planet = {
+					has_active_building = building_mineral_purification_complex
+				}
+			}
+			minerals = 3
+		}
+
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_mining_1
+				}
+			}
+			minerals = 1
+		}
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_mining_2
+				}
+			}
+			minerals = 1
+		}
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_mining_3
+				}
+			}
+			minerals = 1
+		}
+	}
+
+	# Indications
+	triggered_desc = {
+		trigger = {
+			planet = {
+				NOT = {
+					has_planet_flag = advanced_habitat_2
+				}
+			}
+		}
+		text = tec_upgradeable_district_habitat
+	}
+	triggered_desc = {
+		text = tec_building_affect_district_habitat
+	}
+
+	# Housing
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		planet_housing_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		planet_housing_add = 1
+	}
+
+	# Jobs
+	triggered_planet_modifier = {	#Regular
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		modifier = {
+			job_miner_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		modifier = {
+			job_miner_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {	# Fe
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		modifier = {
+			job_fe_acolyte_mine_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		modifier = {
+			job_fe_acolyte_mine_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {	# Machine
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		job_mining_drone_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		job_mining_drone_add = 1
+	}
+
+	triggered_planet_modifier = {	# Hive
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		job_mining_drone_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		job_mining_drone_add = 2
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_mining_drone_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_miner_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		text = job_fe_acolyte_mine_effect_desc
+	}	
+
+	ai_resource_production = {
+		minerals = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_pdhab_science = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		uses_district_set = pdplanethab
+		has_planet_flag = pd_science_hab
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+	
+	potential = {
+		uses_district_set = pdplanethab
+		has_planet_flag = pd_science_hab
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+
+	conversion_ratio = 0.5
+	convert_to = {
+		district_tec_hab_arcology_research
+	}
+	
+	resources = {
+		category = planet_districts_hab_research
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}
+
+		# New production
+		produces = {
+			physics_research = 4
+			society_research = 4
+			engineering_research = 4
+		}
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = advanced_habitat
+				}
+			}
+			physics_research = 2
+			society_research = 2
+			engineering_research = 2
+		}
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = advanced_habitat_2
+				}
+			}
+			physics_research = 4
+			society_research = 4
+			engineering_research = 4
+		}
+
+		produces = {
+			trigger = {
+				planet = {
+					OR = {
+						has_active_building = building_institute
+						has_active_building = building_supercomputer
+					}
+				}
+			}
+			physics_research = 2
+			society_research = 2
+			engineering_research = 2
+		}
+
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_physics_1
+				}
+			}
+			physics_research = 1
+		}
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_physics_2
+				}
+			}
+			physics_research = 1
+		}
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_physics_3
+				}
+			}
+			physics_research = 1
+		}
+
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_society_1
+				}
+			}
+			society_research = 1
+		}
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_society_2
+				}
+			}
+			society_research = 1
+		}
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_society_3
+				}
+			}
+			society_research = 1
+		}
+
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_engineering_1
+				}
+			}
+			engineering_research = 1
+		}
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_engineering_2
+				}
+			}
+			engineering_research = 1
+		}
+		produces = {
+			trigger = {
+				owner = {
+					has_technology = tech_engineering_3
+				}
+			}
+			engineering_research = 1
+		}
+		
+	}
+
+	
+	# Indications
+	triggered_desc = {
+		trigger = {
+			planet = {
+				NOT = {
+					has_planet_flag = advanced_habitat_2
+				}
+			}
+		}
+		text = tec_upgradeable_district_habitat
+	}
+	triggered_desc = {
+		text = tec_building_affect_district_habitat
+	}
+
+	# Housing
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		planet_housing_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		planet_housing_add = 1
+	}
+
+	# Jobs
+	triggered_planet_modifier = {	#Regular
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		modifier = {
+			job_researcher_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		modifier = {
+			job_researcher_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {	# Machine
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		job_calculator_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		job_calculator_add = 1
+	}
+
+	triggered_planet_modifier = {	# Hive
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		job_brain_drone_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		job_brain_drone_add = 1
+	}
+	
+	# Descs
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+			}
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		text = job_researcher_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_machine_empire = yes
+			}
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		text = job_calculator_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_hive_empire = yes
+			}
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		text = job_brain_drone_effect_desc
+	}
+}
+
+district_pdhab_commercial = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		uses_district_set = pdplanethab
+		has_planet_flag = pd_commercial_hab
+
+		exists = from
+		from = { 
+			is_gestalt = no 
+		}
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+	
+	potential = {
+		uses_district_set = pdplanethab
+		has_planet_flag = pd_commercial_hab
+
+		exists = from
+		from = { 
+			is_gestalt = no 
+		}
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+
+	conversion_ratio = 0.5
+	convert_to = {
+		district_hab_energy
+		district_tec_hab_arcology_trade
+		district_tec_hab_arcology_maintenance
+	}
+
+	resources = {
+		category = planet_districts_hab_trade
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_regular_empire = yes
+				is_fallen_empire_spiritualist = no 
+			}
+		}
+		modifier = {
+			job_tec_trade_specialist_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_regular_empire = yes
+				has_active_tradition = tr_prosperity_interstellar_franchising 
+			}
+		}
+		modifier = {
+			job_clerk_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				has_active_tradition = tr_mercantile_commercial_enterprise 
+			}
+		}
+		modifier = {
+			job_merchant_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				tec_is_trade_gestalt = yes
+				has_active_tradition = tr_mercantile_commercial_enterprise 
+			}
+		}
+		modifier = {
+			job_tec_trade_drone_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_manager_add = 2
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = no }
+		}
+		text = job_tec_trade_specialist_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = no }
+		}
+		text = job_manager_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { has_active_tradition = tr_prosperity_interstellar_franchising }
+		}
+		text = job_clerk_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { has_active_tradition = tr_mercantile_commercial_enterprise }
+		}
+		text = job_merchant_effect_desc
+	}
+
+	ai_resource_production = {
+		consumer_goods = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+
+
+district_pdhab_cultural = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		uses_district_set = pdplanethab
+
+		exists = from
+		from = {
+			OR = {
+				is_gestalt = no
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+
+	potential = {
+		uses_district_set = pdplanethab
+
+		exists = owner
+		owner = {
+			OR = {
+				is_gestalt = no
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+
+	conversion_ratio = 0.5
+	convert_to = {
+		district_hab_energy
+		district_tec_hab_arcology_leisure
+	}
+
+
+	resources = {
+		category = planet_districts_hab_leisure
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				NOT = { has_valid_civic = civic_warrior_culture }
+			}
+		}
+		modifier = {
+			job_entertainer_add = 2
+		#	job_culture_worker_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				has_valid_civic = civic_warrior_culture
+			}
+		}
+		modifier = {
+			job_duelist_add = 2
+		#	job_culture_worker_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		modifier = {
+			job_bio_trophy_add = 5
+			job_maintenance_drone_add = 1
+		}
+	}
+
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				has_valid_civic = civic_warrior_culture
+			}
+		}
+		text = job_duelist_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				NOT = { has_valid_civic = civic_warrior_culture }
+			}
+		}
+		text = job_entertainer_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		text = job_bio_trophy_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		text = job_maintenance_drone_effect_desc
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_pdhab_mil = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		uses_district_set = pdplanethab
+		has_planet_flag = pd_mil_hab
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+	
+	potential = {
+		uses_district_set = pdplanethab
+		has_planet_flag = pd_mil_hab
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+
+	conversion_ratio = 0.5
+	convert_to = {
+		district_tec_hab_arcology_industry
+		district_tec_hab_arcology_foundry
+		district_tec_hab_arcology_research
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+	
+	resources = {
+		category = planet_districts_hab_mining
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+	}
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_warrior_drone_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_warrior_drone_add = 2
+		}
+	}	
+		
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		modifier = {
+			job_soldier_add = 2
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_warrior_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_soldier_effect_desc
+	}
+}

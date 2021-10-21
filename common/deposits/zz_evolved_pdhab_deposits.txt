@@ -1,0 +1,1340 @@
+#GG Storms
+
+d_ggstorm15 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_housing_2
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 2700
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 7500
+			alloys = 3000
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -15
+	}
+
+	potential = {
+			is_planet_class = pc_pd_gas_giant_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_ggstorm10 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_housing_2
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 1800
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 5000
+			alloys = 2000
+		}
+	}
+	
+	
+	planet_modifier = {
+		planet_max_districts_add = -10
+	}
+
+	potential = {
+			is_planet_class = pc_pd_gas_giant_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_ggstorm5 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_housing_2
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 900
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 2500
+			alloys = 1000
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -5
+	}
+
+	potential = {
+			is_planet_class = pc_pd_gas_giant_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_ggstorm4 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_housing_2
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 720
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 2000
+			minerals = 1000
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -4
+	}
+
+	potential = {
+			is_planet_class = pc_pd_gas_giant_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_ggstorm3 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_housing_2
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 540
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 1500
+			minerals = 750
+		}
+	}
+	
+	
+	planet_modifier = {
+		planet_max_districts_add = -3
+	}
+
+	potential = {
+			is_planet_class = pc_pd_gas_giant_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_ggstorm2 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_housing_2
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 360
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 1000
+			minerals = 500
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+
+	potential = {
+			is_planet_class = pc_pd_gas_giant_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_ggstorm1 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_housing_2
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 180
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 500
+			minerals = 250
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -1
+	}
+
+	potential = {
+			is_planet_class = pc_pd_gas_giant_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+#Barren Blockers
+
+d_bblock15 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_mountain_range
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 2700
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 7500
+			alloys = 3000
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -15
+	}
+
+	potential = {
+		OR = {
+			is_planet_class = pc_pd_barren_hab
+			is_planet_class = pc_pd_barren_cold_hab
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_bblock10 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_deep_sinkhole
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 1800
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 5000
+			alloys = 2000
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -10
+	}
+
+	potential = {
+		OR = {
+			is_planet_class = pc_pd_barren_hab
+			is_planet_class = pc_pd_barren_cold_hab
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_bblock5 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_mountain_range
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 900
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 2500
+			alloys = 1000
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -5
+	}
+
+	potential = {
+		OR = {
+			is_planet_class = pc_pd_barren_hab
+			is_planet_class = pc_pd_barren_cold_hab
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_bblock4 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_quicksand_basin
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 720
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 2000
+			minerals = 1000
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -4
+	}
+
+	potential = {
+		OR = {
+			is_planet_class = pc_pd_barren_hab
+			is_planet_class = pc_pd_barren_cold_hab
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_bblock3 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_quicksand_basin
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 540
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 1500
+			minerals = 750
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -3
+	}
+
+	potential = {
+		OR = {
+			is_planet_class = pc_pd_barren_hab
+			is_planet_class = pc_pd_barren_cold_hab
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_bblock2 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_quicksand_basin
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 360
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 1000
+			minerals = 500
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+
+	potential = {
+		OR = {
+			is_planet_class = pc_pd_barren_hab
+			is_planet_class = pc_pd_barren_cold_hab
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_bblock1 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_quicksand_basin
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 180
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 500
+			minerals = 250
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -1
+	}
+
+	potential = {
+		OR = {
+			is_planet_class = pc_pd_barren_hab
+			is_planet_class = pc_pd_barren_cold_hab
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+#Molten Blockers
+
+d_mblock15 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_volcano
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 2700
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 7500
+			alloys = 3000
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -15
+	}
+
+	potential = {
+			is_planet_class = pc_pd_molten_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_mblock10 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_volcano
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 1800
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 5000
+			alloys = 2000
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -10
+	}
+
+	potential = {
+		is_planet_class = pc_pd_molten_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_mblock5 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_volcano
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 900
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 2500
+			alloys = 1000
+		}
+	}
+	
+	
+	planet_modifier = {
+		planet_max_districts_add = -5
+	}
+
+	potential = {
+		is_planet_class = pc_pd_molten_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_mblock4 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_volcano
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 720
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 2000
+			minerals = 1000
+		}
+	}
+	
+	
+	planet_modifier = {
+		planet_max_districts_add = -4
+	}
+
+	potential = {
+		is_planet_class = pc_pd_molten_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_mblock3 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_volcano
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 540
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 1500
+			minerals = 750
+		}
+	}
+	
+	
+	planet_modifier = {
+		planet_max_districts_add = -3
+	}
+
+	potential = {
+		is_planet_class = pc_pd_molten_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_mblock2 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_quicksand_basin
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 360
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 1000
+			minerals = 500
+		}
+	}
+	
+	
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+
+	potential = {
+		is_planet_class = pc_pd_molten_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_mblock1 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_volcano
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 180
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 500
+			minerals = 250
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -1
+	}
+
+	potential = {
+		is_planet_class = pc_pd_molten_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+#Frozen Blockers
+
+d_fblock15 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_massive_glacier
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 2700
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 7500
+			alloys = 3000
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -15
+	}
+
+	potential = {
+			is_planet_class = pc_pd_frozen_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_fblock10 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_massive_glacier
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 1800
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 5000
+			alloys = 2000
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -10
+	}
+
+	potential = {
+			is_planet_class = pc_pd_frozen_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_fblock5 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_massive_glacier
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 900
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 2500
+			alloys = 1000
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -5
+	}
+
+	potential = {
+		is_planet_class = pc_pd_frozen_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_fblock4 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_massive_glacier
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 720
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 2000
+			minerals = 1000
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -4
+	}
+
+	potential = {
+		is_planet_class = pc_pd_frozen_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_fblock3 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_massive_glacier
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 540
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 1500
+			minerals = 750
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -3
+	}
+
+	potential = {
+		is_planet_class = pc_pd_frozen_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_fblock2 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_massive_glacier
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 360
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 1000
+			minerals = 500
+		}
+	}
+	
+	
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+
+	potential = {
+		is_planet_class = pc_pd_frozen_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_fblock1 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_massive_glacier
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 180
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 500
+			minerals = 250
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -1
+	}
+
+	potential = {
+		is_planet_class = pc_pd_frozen_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+#Hothouse Blockers
+
+d_hhblock15 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_housing_2
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 2700
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 7500
+			alloys = 3000
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -15
+	}
+
+	potential = {
+			is_planet_class = pc_pd_hothouse_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_hhblock10 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_housing_2
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 1800
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 5000
+			alloys = 2000
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -10
+	}
+
+	potential = {
+			is_planet_class = pc_pd_hothouse_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_hhblock5 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_housing_2
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 900
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 2500
+			alloys = 1000
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -5
+	}
+
+	potential = {
+			is_planet_class = pc_pd_hothouse_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_hhblock4 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_housing_2
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 720
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 2000
+			minerals = 1000
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -4
+	}
+
+	potential = {
+			is_planet_class = pc_pd_hothouse_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_hhblock3 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_housing_2
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 540
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 1500
+			minerals = 750
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -3
+	}
+
+	potential = {
+			is_planet_class = pc_pd_hothouse_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_hhblock2 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_housing_2
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 360
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 1000
+			minerals = 500
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+
+	potential = {
+			is_planet_class = pc_pd_hothouse_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_hhblock1 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_blockers
+	can_be_cleared = { 
+		tec_pdplanethab_can_clear_blocker_arcology = yes
+		exists = owner
+		owner = {
+			has_technology = tech_housing_2
+			has_technology = tech_terrestrial_sculpting
+		}
+	}
+
+	time = 180
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 500
+			minerals = 250
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -1
+	}
+
+	potential = {
+			is_planet_class = pc_pd_hothouse_hab
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_expanded_dome_system = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_rare
+
+	planet_modifier = {
+		planet_max_districts_add = 2
+		pop_environment_tolerance = 0.10
+	}
+
+	potential = {
+		OR = {
+			is_planet_class = pc_pd_hothouse_hab
+			is_planet_class = pc_pd_barren_cold_hab
+			is_planet_class = pc_pd_barren_hab
+			is_planet_class = pc_pd_frozen_hab
+			is_planet_class = pc_pd_gas_giant_hab
+			is_planet_class = pc_pd_molten_hab
+		}
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_expanded_dome_system_1 = {
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+	category = deposit_cat_rare
+
+	planet_modifier = {
+		planet_max_districts_add = 1
+		pop_environment_tolerance = 0.10
+	}
+
+	potential = { is_planet_class = pc_pd_asteroid_hab }
+
+	drop_weight = { weight = 0 }
+}

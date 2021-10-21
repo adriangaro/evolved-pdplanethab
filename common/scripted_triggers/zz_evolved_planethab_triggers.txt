@@ -1,0 +1,6 @@
+tec_pdplanethab_can_clear_blocker_arcology = {
+	custom_tooltip = {
+		fail_text = "tec_pdplanethab_requires_arcology_habitat"
+		has_modifier = tec_pm_arcology_habitat
+	}
+}

@@ -1,0 +1,87 @@
+ap_arcology_project = {
+	potential = {
+		host_has_dlc = "Megacorp"
+		#	is_regular_empire = yes
+		NOR = { 
+			has_valid_civic = civic_agrarian_idyll 
+			has_ethic = ethic_fanatic_green
+		}
+		NOT = {
+			has_ascension_perk = ap_arcology_project
+		}
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_technology_housing_2"
+			has_technology = tech_housing_2
+		}
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_2"
+			num_ascension_perks > 1
+		}
+
+		custom_tooltip = {
+			fail_text = tec_ap_deactivated
+			NOT = {
+				has_ascension_perk = ap_tec_sidereal_arcologies
+			}
+		}
+	}
+
+	on_enabled = {
+		custom_tooltip = "allow_arcology_project"
+		custom_tooltip = "decision_arcology_project_effects"
+		custom_tooltip = "tec_blank"
+		custom_tooltip = "tec_blank"
+		custom_tooltip = "tec_allow_pdplanethab_arcology_project"
+		custom_tooltip = "decision_tec_pdplanethab_arcology_project_effects"
+		custom_tooltip = tec_ap_arcology_steps
+		if = {
+			limit = { 
+				NOT = {
+					has_ascension_perk = ap_tec_sidereal_arcologies
+				}
+			}
+			custom_tooltip =  tec_ap_block_others
+		}
+	}
+
+	ai_weight = {
+		factor = 100 #take me pls
+		modifier = {
+			factor = 2
+			OR = {
+				has_ethic = ethic_pacifist
+				has_ethic = ethic_industrial
+			}
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_ethic = ethic_fanatic_pacifist
+				has_ethic = ethic_fanatic_industrial
+			}
+		}
+		modifier = {
+			factor = 100
+			OR = {
+				has_ethic = ethic_industrial
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
+			}
+		}
+		modifier = {
+			factor = 10000
+			OR = {
+				any_owned_planet = {
+					OR = {
+						uses_district_set = city_world
+						is_planet_class = pc_relic
+					}
+				}
+				has_origin = origin_remnants
+			}
+		}
+	}
+}
