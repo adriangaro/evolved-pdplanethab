@@ -1361,11 +1361,17 @@ district_pdhab_mining = {
 	show_on_uncolonized = {
 		uses_district_set = pdplanethab
 		has_planet_flag = pd_mining_hab
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
 	}
 	
 	potential = {
 		uses_district_set = pdplanethab
 		has_planet_flag = pd_mining_hab
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
 	}
 
 	conversion_ratio = 1
@@ -1942,8 +1948,8 @@ district_pdhab_commercial = {
 		uses_district_set = pdplanethab
 		has_planet_flag = pd_commercial_hab
 
-		exists = from
-		from = { 
+		exists = owner
+		owner = { 
 			is_gestalt = no 
 		}
 		NOT = {
@@ -2070,7 +2076,6 @@ district_pdhab_commercial = {
 		}
 	}
 }
-
 
 
 district_pdhab_cultural = {

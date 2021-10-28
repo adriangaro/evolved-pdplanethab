@@ -1,3 +1,20 @@
+@tec_hab_arcology_influence = 200
+@tec_hab_arcology_minerals = 5000
+@tec_hab_arcology_alloys = 2500
+
+@tec_hab_to_arcology_influence = 100
+@tec_hab_to_arcology_minerals = 10000
+
+@tec_hab_arcology_industrialist_t1 = -50
+@tec_hab_arcology_industrialist_t2 = -100
+
+@tec_hab_arcology_artifice = -2500
+@tec_hab_to_arcology_artifice = -5000
+
+@tec_hab_to_arcology_industrialist_t1 = -25
+@tec_hab_to_arcology_industrialist_t2 = -50
+
+
 # Ecu habitat
 decision_tec_pdplanethab_arcology_civil = {
 	owned_planets_only = yes
@@ -7,9 +24,9 @@ decision_tec_pdplanethab_arcology_civil = {
 	resources = {
 		category = decisions
 		cost = {
-			influence = 200
-			minerals = 5000
-			alloys = 2500
+			influence = @tec_hab_arcology_influence
+			minerals = @tec_hab_arcology_minerals
+			alloys = @tec_hab_arcology_alloys
 		}
 		cost = {
 			trigger = {
@@ -17,7 +34,7 @@ decision_tec_pdplanethab_arcology_civil = {
 					has_tradition = tr_tec_artifice_final_2
 				}
 			}
-			minerals = -2500
+			minerals = @tec_hab_arcology_artifice
 		}
 		cost = {
 			trigger = {
@@ -25,7 +42,7 @@ decision_tec_pdplanethab_arcology_civil = {
 					has_ethic = ethic_industrial
 				}
 			}
-			influence = -100
+			influence = @tec_hab_arcology_industrialist_t1
 		}
 		cost = {
 			trigger = {
@@ -33,7 +50,7 @@ decision_tec_pdplanethab_arcology_civil = {
 					has_ethic = ethic_fanatic_industrial
 				}
 			}
-			influence = -200
+			influence = tec_hab_arcology_industrialist_t2
 		}
 	}
 
@@ -199,9 +216,9 @@ decision_tec_pdplanethab_arcology_industrial = {
 	resources = {
 		category = decisions
 		cost = {
-			influence = 200
-			minerals = 5000
-			alloys = 2500
+			influence = @tec_hab_arcology_influence
+			minerals = @tec_hab_arcology_minerals
+			alloys = @tec_hab_arcology_alloys
 		}
 		cost = {
 			trigger = {
@@ -209,7 +226,7 @@ decision_tec_pdplanethab_arcology_industrial = {
 					has_tradition = tr_tec_artifice_final_2
 				}
 			}
-			minerals = -2500
+			minerals = @tec_hab_arcology_artifice
 		}
 		cost = {
 			trigger = {
@@ -217,7 +234,7 @@ decision_tec_pdplanethab_arcology_industrial = {
 					has_ethic = ethic_industrial
 				}
 			}
-			influence = -100
+			influence = @tec_hab_arcology_industrialist_t1
 		}
 		cost = {
 			trigger = {
@@ -225,7 +242,7 @@ decision_tec_pdplanethab_arcology_industrial = {
 					has_ethic = ethic_fanatic_industrial
 				}
 			}
-			influence = -200
+			influence = @tec_hab_arcology_industrialist_t2
 		}
 	}
 
@@ -421,8 +438,8 @@ decision_tec_pdplanethab_arcology_project_militarized = {
 	resources = {
 		category = decisions
 		cost = {
-			influence = 100
-			minerals = 10000
+			influence = @tec_hab_to_arcology_influence
+			minerals = @tec_hab_to_arcology_minerals
 		}
 		cost = {
 			trigger = {
@@ -430,7 +447,7 @@ decision_tec_pdplanethab_arcology_project_militarized = {
 					has_tradition = tr_tec_artifice_final_2
 				}
 			}
-			minerals = -5000
+			minerals = @tec_hab_to_arcology_artifice
 		}
 		cost = {
 			trigger = {
@@ -438,7 +455,7 @@ decision_tec_pdplanethab_arcology_project_militarized = {
 					has_ethic = ethic_industrial
 				}
 			}
-			influence = -50
+			influence = @tec_hab_to_arcology_industrialist_t1
 		}
 		cost = {
 			trigger = {
@@ -446,7 +463,7 @@ decision_tec_pdplanethab_arcology_project_militarized = {
 					has_ethic = ethic_fanatic_industrial
 				}
 			}
-			influence = -100
+			influence = @tec_hab_to_arcology_industrialist_t2
 		}
 	}
 
@@ -533,8 +550,8 @@ decision_tec_pdplanethab_arcology_project_admin = {
 	resources = {
 		category = decisions
 		cost = {
-			influence = 100
-			minerals = 10000
+			influence = @tec_hab_to_arcology_influence
+			minerals = @tec_hab_to_arcology_minerals
 		}
 		cost = {
 			trigger = {
@@ -542,7 +559,7 @@ decision_tec_pdplanethab_arcology_project_admin = {
 					has_tradition = tr_tec_artifice_final_2
 				}
 			}
-			minerals = -5000
+			minerals = @tec_hab_to_arcology_artifice
 		}
 		cost = {
 			trigger = {
@@ -550,7 +567,7 @@ decision_tec_pdplanethab_arcology_project_admin = {
 					has_ethic = ethic_industrial
 				}
 			}
-			influence = -50
+			influence = @tec_hab_to_arcology_industrialist_t1
 		}
 		cost = {
 			trigger = {
@@ -558,7 +575,7 @@ decision_tec_pdplanethab_arcology_project_admin = {
 					has_ethic = ethic_fanatic_industrial
 				}
 			}
-			influence = -100
+			influence = @tec_hab_to_arcology_industrialist_t2
 		}
 	}
 
@@ -671,8 +688,8 @@ decision_tec_pdplanethab_arcology_project_science = {
 	resources = {
 		category = decisions
 		cost = {
-			influence = 100
-			minerals = 10000
+			influence = @tec_hab_to_arcology_influence
+			minerals = @tec_hab_to_arcology_minerals
 		}
 		cost = {
 			trigger = {
@@ -680,7 +697,7 @@ decision_tec_pdplanethab_arcology_project_science = {
 					has_tradition = tr_tec_artifice_final_2
 				}
 			}
-			minerals = -5000
+			minerals = @tec_hab_to_arcology_artifice
 		}
 		cost = {
 			trigger = {
@@ -688,7 +705,7 @@ decision_tec_pdplanethab_arcology_project_science = {
 					has_ethic = ethic_industrial
 				}
 			}
-			influence = -50
+			influence = @tec_hab_to_arcology_industrialist_t1
 		}
 		cost = {
 			trigger = {
@@ -696,7 +713,7 @@ decision_tec_pdplanethab_arcology_project_science = {
 					has_ethic = ethic_fanatic_industrial
 				}
 			}
-			influence = -100
+			influence = @tec_hab_to_arcology_industrialist_t2
 		}
 	}
 
