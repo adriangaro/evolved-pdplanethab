@@ -207,6 +207,38 @@ district_pdhab_industrial = {
 			energy = 2
 			
 		}
+
+		# Unleashed Industrialization
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_valid_civic = civic_tec_unleashed_industrialization
+				}
+				planet = {
+					OR = {
+						is_capital = yes
+						tec_has_alloy_designation = yes
+					}
+				}
+			}
+			alloys = 2
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					has_valid_civic = civic_tec_unleashed_industrialization
+				}
+				planet = {
+					OR = {
+						is_capital = yes
+						tec_has_cg_designation = yes
+					}
+				}
+			}
+			consumer_goods = 2
+		}
 	}
 
 	planet_modifier = {
@@ -239,6 +271,21 @@ district_pdhab_industrial = {
 			}
 		}
 		planet_amenities_add = 2
+	}
+
+	# Unleashed Industrialization
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_tec_unleashed_industrialization
+			}
+			OR = {
+				tec_has_alloy_designation = yes
+				tec_has_cg_designation = yes
+			}
+		}
+		planet_amenities_add = -2
 	}
 
 	# Indication
@@ -305,7 +352,6 @@ district_pdhab_industrial = {
 			exists = owner
 			owner = { 
 				is_hive_empire = yes 
-				tec_is_cybernetic_hive = no
 				is_catalytic_empire = no
 			}
 		}
@@ -318,7 +364,6 @@ district_pdhab_industrial = {
 			exists = owner
 			owner = { 
 				is_hive_empire = yes 
-				tec_is_cybernetic_hive = no
 				is_catalytic_empire = yes
 			}
 		}
@@ -552,7 +597,6 @@ district_pdhab_industrial = {
 					owner = {
 						is_hive_empire = yes
 						is_catalytic_empire = no
-						tec_is_cybernetic_hive = no	# EXCEPTION!!
 						has_ethic = ethic_gestalt_empathy
 						has_technology = tech_tec_gestalt_friendship
 					}
@@ -586,7 +630,6 @@ district_pdhab_industrial = {
 					owner = {
 						is_hive_empire = yes
 						is_catalytic_empire = yes
-						tec_is_cybernetic_hive = no	# EXCEPTION!!
 						has_ethic = ethic_gestalt_empathy
 						has_technology = tech_tec_gestalt_friendship
 					}
@@ -598,37 +641,6 @@ district_pdhab_industrial = {
 			job_catalytic_drone_add = -1
 		}
 	}
-
-
-	# Special hives
-	triggered_planet_modifier = {	# Cybernetic will always generate 1 cg job
-		potential = {
-			exists = owner
-			owner = {
-				is_hive_empire = yes
-				tec_is_cybernetic_hive = yes
-				is_catalytic_empire = no
-			}
-		}
-		modifier = {
-			job_artisan_drone_add = 1
-			job_alloy_drone_add = 1
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_hive_empire = yes
-				tec_is_cybernetic_hive = yes
-				is_catalytic_empire = yes
-			}
-		}
-		modifier = {
-			job_artisan_drone_add = 1
-			job_catalytic_drone_add = 1
-		}
-	}	
 
 	# Desc
 	triggered_desc = {
@@ -1034,19 +1046,16 @@ district_pdhab_food = {
 	}
 
 
+	# Descs
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = job_agri_drone_effect_desc
-	}
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { 
+			owner = {
 				is_gestalt = no
 				is_fallen_empire_spiritualist = no
+			}
+			planet = {
+				has_planet_flag = advanced_habitat
 			}
 		}
 		text = job_farmer_effect_desc
@@ -1054,13 +1063,26 @@ district_pdhab_food = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
+			owner = { is_gestalt = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		text = job_agri_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
 			owner = { is_fallen_empire_spiritualist = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
 		}
 		text = job_fe_acolyte_farm_effect_desc
 	}
 
 	ai_resource_production = {
-		food = 1
+		food = 2
 		trigger = {
 			always = yes
 		}
@@ -1320,19 +1342,16 @@ district_pdhab_energy = {
 		job_technician_drone_add = 2
 	}
 
+	# Descs
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = job_technician_drone_effect_desc
-	}
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { 
+			owner = {
 				is_gestalt = no
 				is_fallen_empire_spiritualist = no
+			}
+			planet = {
+				has_planet_flag = advanced_habitat
 			}
 		}
 		text = job_technician_effect_desc
@@ -1340,7 +1359,20 @@ district_pdhab_energy = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
+			owner = { is_gestalt = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		text = job_technician_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
 			owner = { is_fallen_empire_spiritualist = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
 		}
 		text = job_fe_acolyte_generator_effect_desc
 	}
@@ -1593,32 +1625,40 @@ district_pdhab_mining = {
 		job_mining_drone_add = 2
 	}
 
+	# Descs
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = job_mining_drone_effect_desc
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { 
+			owner = {
 				is_gestalt = no
 				is_fallen_empire_spiritualist = no
+			}
+			planet = {
+				has_planet_flag = advanced_habitat
 			}
 		}
 		text = job_miner_effect_desc
 	}
-
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		text = job_mining_drone_effect_desc
+	}
 	triggered_desc = {
 		trigger = {
 			exists = owner
 			owner = { is_fallen_empire_spiritualist = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
 		}
 		text = job_fe_acolyte_mine_effect_desc
-	}	
+	}
 
 	ai_resource_production = {
 		minerals = 1
@@ -1917,13 +1957,44 @@ district_pdhab_science = {
 		trigger = {
 			exists = owner
 			owner = { 
-				is_hive_empire = yes
+				is_hive_empire = yes 
+				tec_is_cybernetic_hive = no
+				tec_is_organic_hive = no
 			}
 			planet = {
 				has_planet_flag = advanced_habitat
 			}
 		}
 		text = job_brain_drone_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_hive_empire = yes 
+				tec_is_cybernetic_hive = yes
+			}
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		text = job_tec_cybernetic_brain_drone_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_hive_empire = yes 
+				tec_is_cybernetic_hive = no
+				tec_is_organic_hive = yes
+			}
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		text = job_tec_organic_brain_drone_effect_desc
 	}
 }
 
@@ -1987,7 +2058,8 @@ district_pdhab_commercial = {
 			}
 		}
 		modifier = {
-			job_tec_trade_specialist_add = 2
+			job_tec_trade_specialist_add = 1
+			job_clerk_add = 1
 		}
 	}
 	triggered_planet_modifier = {
@@ -2040,7 +2112,9 @@ district_pdhab_commercial = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = no }
+			owner = { 
+				is_fallen_empire_spiritualist = no 
+			}
 		}
 		text = job_tec_trade_specialist_effect_desc
 	}
@@ -2048,7 +2122,19 @@ district_pdhab_commercial = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_fallen_empire_spiritualist = no }
+			owner = { 
+				is_fallen_empire_spiritualist = no 
+			}
+		}
+		text = job_clerk_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_fallen_empire_spiritualist = yes
+			}
 		}
 		text = job_manager_effect_desc
 	}
@@ -2318,3 +2404,4 @@ district_pdhab_mil = {
 		text = job_soldier_effect_desc
 	}
 }
+

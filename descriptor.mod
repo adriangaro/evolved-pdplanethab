@@ -1,4 +1,4 @@
-version="0.0.3"
+version="0.0.4"
 tags={
 	"Gameplay"
 	"Overhaul"
@@ -11,5 +11,5 @@ dependencies={
 	"Planetary Diversity - Planetary Habitats"
 	"Stellaris Evolved - Alpha"
 }
-supported_version="3.1.2"
+supported_version="3.3.2"
 remote_file_id="2633731557"

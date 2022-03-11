@@ -50,7 +50,7 @@ decision_tec_pdplanethab_arcology_civil = {
 					has_ethic = ethic_fanatic_industrial
 				}
 			}
-			influence = tec_hab_arcology_industrialist_t2
+			influence = @tec_hab_arcology_industrialist_t2
 		}
 	}
 
@@ -84,20 +84,22 @@ decision_tec_pdplanethab_arcology_civil = {
 		# Make habitat
 		custom_tooltip = decision_tec_pdplanethab_arcology_civil_effects
 		hidden_effect = {
+			tec_ecu_faction_demands = yes
+			#
 			set_planet_flag = tec_arcology_habitat
 			set_planet_flag = tec_civil_habitat
 			add_modifier = {
 				modifier = tec_pm_arcology_habitat
 				days = -1
 			}
-			remove_modifier = hab_terraforming_candidate
+			tec_pdplanethab_remove_terraforming_modifiers = yes
 			
 			tec_pdplanethab_ensure_planet_size = yes
 			# housing conversion
 			tec_pdplanethab_convert_district = {
 				DISTRICT1 = district_pdhab_housing
 				DISTRICT2 = district_tec_hab_arcology_housing
-				DIVIDE = 2
+				DIVIDE = 1.5
 			}
 			tec_pdplanethab_clear_district = {
 				DISTRICT = district_pdhab_housing
@@ -276,13 +278,16 @@ decision_tec_pdplanethab_arcology_industrial = {
 		# Make habitat
 		custom_tooltip = decision_tec_pdplanethab_arcology_industrial_effects
 		hidden_effect = {
+			# Faction flags
+			tec_ecu_faction_demands = yes
+			#
 			set_planet_flag = tec_arcology_habitat
 			set_planet_flag = tec_industrial_habitat
 			add_modifier = {
 				modifier = tec_pm_arcology_habitat
 				days = -1
 			}
-			remove_modifier = hab_terraforming_candidate
+			tec_pdplanethab_remove_terraforming_modifiers = yes
 			
 			tec_pdplanethab_ensure_planet_size = yes
 			# housing conversion
@@ -791,3 +796,4 @@ decision_tec_pdplanethab_arcology_project_science = {
 		weight = 100
 	}
 }
+

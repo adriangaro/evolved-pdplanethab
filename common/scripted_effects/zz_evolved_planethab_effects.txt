@@ -236,73 +236,6 @@ tec_pdplanethab_ensure_planet_size_end = {
 	clear_variable = initial_size
 }
 
-tec_ecu_planet_entity = {
-	set_planet_entity = {
-		entity = "city_planet_entity"
-		graphical_culture = owner
-	}
-	IF = {
-		limit = { has_global_flag = planetarydiversity }
-		IF = {
-			limit = { owner = { has_trait = trait_pc_aquatic_preference } }
-			set_planet_entity = {
-				entity = "aquaticcity_planet_01_entity"
-				picture = "pc_aquaticcity"
-			}
-		}
-		IF = {
-			limit = { owner = { has_trait = trait_pc_ammonia_preference } }
-			IF = { limit = { NOT = { has_modifier = pdammoniaatmosphere } }	add_modifier = { modifier = pdammoniaatmosphere	} }
-			remove_modifier = ammonia
-			set_planet_entity = { 
-				picture = pc_ammoniacity 
-				entity = ammonia_arc_planet_01_entity
-			}
-		}
-		IF = {
-			limit = { owner = { has_trait = trait_pc_sulfur_preference } }
-			IF = { limit = { NOT = { has_modifier = pdsulfuratmosphere } }	add_modifier = { modifier = pdsulfuratmosphere	} }
-			remove_modifier = pdsulfur
-			set_planet_entity = { 
-				picture = pc_sulfurcity 
-				entity = sulfur_arc_planet_01_entity
-			}
-		}
-		IF = {
-			limit = { owner = { has_trait = trait_pc_methane_preference } }
-			IF = { limit = { NOT = { has_modifier = pdmethaneatmosphere } }	add_modifier = { modifier = pdmethaneatmosphere	} }
-			remove_modifier = methane
-			set_planet_entity = {
-				picture = pc_methanecity 
-				entity = methane_arc_planet_01_entity 
-			}
-		}
-		IF = {
-			limit = { owner = { has_trait = trait_pc_ash_preference } }
-			IF = { limit = { NOT = { has_modifier = pdashatmosphere } }	add_modifier = { modifier = pdashatmosphere	} }
-			remove_modifier = ash
-			set_planet_entity = { 
-				picture = pc_ashcity 
-				entity = ash_arc_planet_01_entity
-			}
-		}
-	}
-}
-
-tec_ecu_ecological_resolution = {
-	if = {
-		limit = {
-			OR = {
-				is_active_resolution = "resolution_ecology_environmental_control_board"
-				is_active_resolution = "resolution_ecology_paradise_initiative"
-			}
-		}
-		owner = {
-			set_timed_country_flag = { flag = resolution_breached_terraformed days = 3600 }
-		}
-	}
-}
-
 tec_pdplanethab_clear_habitat_specific_data = {
 	remove_planet_flag = tec_arcology_habitat
 	remove_planet_flag = tec_civil_habitat
@@ -326,4 +259,70 @@ tec_pdplanethab_clear_habitat_specific_data = {
 	}
 	remove_building = building_hab_system_capital
 	add_building = building_system_capital
+}
+
+tec_pdplanethab_remove_terraforming_modifiers = {
+	remove_modifier = hab_terraforming_candidate
+	remove_modifier = pdterra_storm
+	remove_modifier = pdterra_tidallocked
+	remove_modifier = pdterra_glacio
+	remove_modifier = pdterra_lanthanide
+	remove_modifier = pdterra_rogue
+	remove_modifier = pdterra_karst
+	remove_modifier = pdterra_geothermal
+	remove_modifier = pdterra_superhabitable
+	remove_modifier = pdterra_salt
+	remove_modifier = pdterra_primal
+	remove_modifier = pdterra_aquatic
+	remove_modifier = pdterra_lichen
+	remove_modifier = pdterra_megaflora
+	remove_modifier = pdterra_biolumen
+	remove_modifier = pdterra_aquifer
+	remove_modifier = pdterra_reef
+	remove_modifier = pdterra_coral
+	remove_modifier = pdterra_supercon
+	remove_modifier = terraforming_methane
+	remove_modifier = terraforming_ammonia
+	remove_modifier = terraforming_sulfur
+	remove_modifier = terraforming_ash
+}
+
+tec_ecu_faction_demands = {
+	# Faction flags
+	owner = {
+		set_timed_country_flag = {
+			flag = tec_recently_created_ecumenopolis
+			years = 10
+		}
+		change_variable = {
+			which = tec_created_ecus
+			value = 1
+		}
+	}
+}
+
+tec_void_dweller_auto_colonize = {
+	if = {
+		limit = { 
+			$OWNER$ = {
+				OR = {
+					has_origin = origin_void_dwellers
+					is_ai = yes
+				}
+			}
+		}
+		create_colony = {
+			owner = $OWNER$
+		}
+		if = {
+			limit = { 
+				from = {
+					has_active_tradition = tr_tec_outreach_1_vd
+				}
+			}
+			create_pop = {
+				species = $OWNER$.owner_main_species
+			}
+		}
+	}
 }
