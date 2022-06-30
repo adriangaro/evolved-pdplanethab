@@ -32,6 +32,7 @@ ap_arcology_project = {
 	on_enabled = {
 		custom_tooltip = "allow_arcology_project"
 		custom_tooltip = "decision_arcology_project_effects"
+		custom_tooltip = "tec_decision_arcology_project_extra_effects"
 		custom_tooltip = "tec_blank"
 		custom_tooltip = "tec_blank"
 		custom_tooltip = "tec_allow_pdplanethab_arcology_project"

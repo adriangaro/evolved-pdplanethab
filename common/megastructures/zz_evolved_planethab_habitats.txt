@@ -14,8 +14,7 @@ pd_asteroid_hab_0 = {
 			influence = 50
 		}
 	}
-	construction_blocks_others = no
-	construction_blocked_by_others = no
+	construction_blocks_and_blocked_by = none
 
 	potential = { 
 		#has_technology = tech_pdhabitat_1 
@@ -597,8 +596,7 @@ pd_barren_hab_0 = {
 			influence = 75
 		}
 	}
-	construction_blocks_others = no
-	construction_blocked_by_others = no
+	construction_blocks_and_blocked_by = none
 
 	potential = { 
 		#has_technology = tech_pdhabitat_1 
@@ -1493,8 +1491,7 @@ pd_frozen_hab_0 = {
 			influence = 100
 		}
 	}
-	construction_blocks_others = no
-	construction_blocked_by_others = no
+	construction_blocks_and_blocked_by = none
 
 	potential = { 
 		has_technology = tech_pdhabitat_1 
@@ -2295,8 +2292,7 @@ pd_gas_giant_hab_0 = {
 			influence = 150
 		}
 	}
-	construction_blocks_others = no
-	construction_blocked_by_others = no
+	construction_blocks_and_blocked_by = none
 
 	potential = { 
 		has_technology = tech_pdhabitat_2
@@ -3094,8 +3090,7 @@ pd_hothouse_hab_0 = {
 			influence = 150
 		}
 	}
-	construction_blocks_others = no
-	construction_blocked_by_others = no
+	construction_blocks_and_blocked_by = none
 
 	potential = { 
 		has_technology = tech_pdhabitat_2
@@ -3852,8 +3847,7 @@ pd_molten_hab_0 = {
 			influence = 100
 		}
 	}
-	construction_blocks_others = no
-	construction_blocked_by_others = no
+	construction_blocks_and_blocked_by = none
 
 	potential = { 
 		has_technology = tech_pdhabitat_1 
@@ -4635,9 +4629,7 @@ pd_toxic_hab_0 = {
 			influence = 150
 		}
 	}
-	construction_blocks_others = no
-	construction_blocked_by_others = no
-
+	construction_blocks_and_blocked_by = none
 	potential = { 
 		has_technology = tech_pdhabitat_2
 	}
