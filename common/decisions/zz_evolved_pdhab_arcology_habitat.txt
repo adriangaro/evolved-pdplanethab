@@ -764,7 +764,7 @@ decision_tec_pdplanethab_arcology_project_science = {
 
 			tec_pdplanethab_convert_district = {
 				DISTRICT1 = district_tec_hab_arcology_research
-				DISTRICT2 = district_tec_arcology_academic
+				DISTRICT2 = district_tec_arcology_research
 				DIVIDE = 2
 			}
 
