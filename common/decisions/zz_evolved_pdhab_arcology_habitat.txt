@@ -474,8 +474,9 @@ decision_tec_pdplanethab_arcology_project_militarized = {
 
 	potential = {
 		uses_district_set = pdplanethab
-		NOT = {
+		NOR = {
 			is_planet_class = pc_pd_gas_giant_hab
+			is_planet_class = pc_pd_asteroid_hab
 		}
 		has_planet_flag = tec_arcology_habitat
 		has_planet_flag = tec_industrial_habitat
@@ -586,8 +587,9 @@ decision_tec_pdplanethab_arcology_project_admin = {
 
 	potential = {
 		uses_district_set = pdplanethab
-		NOT = {
+		NOR = {
 			is_planet_class = pc_pd_gas_giant_hab
+			is_planet_class = pc_pd_asteroid_hab
 		}
 		has_planet_flag = tec_arcology_habitat
 		OR = {
@@ -724,8 +726,9 @@ decision_tec_pdplanethab_arcology_project_science = {
 
 	potential = {
 		uses_district_set = pdplanethab
-		NOT = {
+		NOR = {
 			is_planet_class = pc_pd_gas_giant_hab
+			is_planet_class = pc_pd_asteroid_hab
 		}
 		has_planet_flag = tec_arcology_habitat
 		has_planet_flag = tec_civil_habitat
