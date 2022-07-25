@@ -1684,16 +1684,6 @@ district_pdhab_commercial = {
 				is_fallen_empire_spiritualist = no 
 			}
 		}
-		text = job_tec_trade_specialist_effect_desc
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { 
-				is_fallen_empire_spiritualist = no 
-			}
-		}
 		text = job_clerk_effect_desc
 	}
 
