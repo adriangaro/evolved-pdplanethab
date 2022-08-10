@@ -449,7 +449,10 @@ district_pdhab_industrial = {
 	# Designation Job Changes
 	triggered_planet_modifier = {	# Foundry regular
 		potential = {
-			has_designation = col_dome_foundry
+			OR = {
+				has_designation = col_habitat_foundry
+				has_designation = col_dome_foundry
+			}
 			exists = owner
 			owner = { 
 				is_regular_empire = yes 
@@ -462,7 +465,10 @@ district_pdhab_industrial = {
 	}
 	triggered_planet_modifier = {
 		potential = {
-			has_designation = col_dome_foundry
+			OR = {
+				has_designation = col_habitat_foundry
+				has_designation = col_dome_foundry
+			}
 			exists = owner
 			owner = { 
 				is_regular_empire = yes 
@@ -475,7 +481,10 @@ district_pdhab_industrial = {
 	}
 	triggered_planet_modifier = {
 		potential = {
-			has_designation = col_dome_foundry
+			OR = {
+				has_designation = col_habitat_foundry
+				has_designation = col_dome_foundry
+			}
 			exists = owner
 			owner = { 
 				is_regular_empire = yes 
@@ -488,7 +497,10 @@ district_pdhab_industrial = {
 	}
 	triggered_planet_modifier = {
 		potential = {
-			has_designation = col_dome_foundry
+			OR = {
+				has_designation = col_habitat_foundry
+				has_designation = col_dome_foundry
+			}
 			exists = owner
 			owner = { 
 				is_regular_empire = yes 
@@ -502,7 +514,10 @@ district_pdhab_industrial = {
 
 	triggered_planet_modifier = {	# factory regular
 		potential = {
-			has_designation = col_dome_factory
+			OR = {
+				has_designation = col_habitat_factory
+				has_designation = col_dome_factory
+			}
 			exists = owner
 			owner = { 
 				is_regular_empire = yes 
@@ -515,7 +530,10 @@ district_pdhab_industrial = {
 	}
 	triggered_planet_modifier = {
 		potential = {
-			has_designation = col_dome_factory
+			OR = {
+				has_designation = col_habitat_factory
+				has_designation = col_dome_factory
+			}
 			exists = owner
 			owner = { 
 				is_regular_empire = yes 
@@ -528,7 +546,10 @@ district_pdhab_industrial = {
 	}
 	triggered_planet_modifier = {
 		potential = {
-			has_designation = col_dome_factory
+			OR = {
+				has_designation = col_habitat_factory
+				has_designation = col_dome_factory
+			}
 			exists = owner
 			owner = { 
 				is_regular_empire = yes 
@@ -541,7 +562,10 @@ district_pdhab_industrial = {
 	}
 	triggered_planet_modifier = {
 		potential = {
-			has_designation = col_dome_factory
+			OR = {
+				has_designation = col_habitat_factory
+				has_designation = col_dome_factory
+			}
 			exists = owner
 			owner = { 
 				is_regular_empire = yes 
@@ -557,7 +581,10 @@ district_pdhab_industrial = {
 		potential = {
 			OR = {
 				AND = {
-					has_designation = col_dome_factory
+					OR = {
+						has_designation = col_habitat_factory
+						has_designation = col_dome_factory
+					}
 					exists = owner
 					owner = {
 						is_machine_empire = yes
@@ -592,6 +619,7 @@ district_pdhab_industrial = {
 			OR = {
 				AND = {
 					OR = {
+						has_designation = col_habitat_factory
 						has_designation = col_dome_factory
 					}
 					exists = owner
@@ -628,7 +656,10 @@ district_pdhab_industrial = {
 		potential = {
 			OR = {
 				AND = {
-					has_designation = col_dome_factory
+					OR = {
+						has_designation = col_habitat_factory
+						has_designation = col_dome_factory
+					}
 					exists = owner
 					owner = {
 						is_hive_empire = yes
@@ -661,7 +692,10 @@ district_pdhab_industrial = {
 		potential = {
 			OR = {
 				AND = {
-					has_designation = col_dome_factory
+					OR = {
+						has_designation = col_habitat_factory
+						has_designation = col_dome_factory
+					}
 					exists = owner
 					owner = {
 						is_hive_empire = yes

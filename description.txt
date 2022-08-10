@@ -22,3 +22,5 @@ Stellaris Evolved has already internal support for Planetary Diversity, however 
 For giving me permission to make this patch, love his work and makes Stellaris a lot more flavorful.
 [b]Rodahtnov[/b]
 For the insights and help he has given me to balance this around Stellaris Evolved. A great overhaul without which I can't play.
+[b]Borsk on Discord[/b]
+For his help on improvements to the patch.

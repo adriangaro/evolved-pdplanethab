@@ -202,6 +202,7 @@ decision_tec_pdplanethab_arcology_civil = {
 			}
 			
 			tec_pdplanethab_ensure_planet_size_end = yes
+			tec_evolved_planethab_arcology_texture_effect = yes
 		}
 	}
 
@@ -427,6 +428,7 @@ decision_tec_pdplanethab_arcology_industrial = {
 			}
 			
 			tec_pdplanethab_ensure_planet_size_end = yes
+			tec_evolved_planethab_arcology_texture_effect = yes
 		}
 	}
 
@@ -540,6 +542,8 @@ decision_tec_pdplanethab_arcology_project_militarized = {
 			change_pc = pc_city
 			tec_ecu_planet_entity = yes
 			tec_ecu_ecological_resolution = yes
+
+			tec_evolved_planethab_pd_arcology_patch_compat_effect = yes
 		}
 	}
 
@@ -679,6 +683,7 @@ decision_tec_pdplanethab_arcology_project_admin = {
 			change_pc = pc_city
 			tec_ecu_planet_entity = yes
 			tec_ecu_ecological_resolution = yes
+			tec_evolved_planethab_pd_arcology_patch_compat_effect = yes
 		}
 	}
 
@@ -792,6 +797,7 @@ decision_tec_pdplanethab_arcology_project_science = {
 			change_pc = pc_city
 			tec_ecu_planet_entity = yes
 			tec_ecu_ecological_resolution = yes
+			tec_evolved_planethab_pd_arcology_patch_compat_effect = yes
 		}
 	}
 

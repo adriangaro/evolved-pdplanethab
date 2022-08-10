@@ -311,18 +311,41 @@ tec_void_dweller_auto_colonize = {
 				}
 			}
 		}
-		create_colony = {
-			owner = $OWNER$
-		}
-		if = {
-			limit = { 
-				from = {
-					has_active_tradition = tr_tec_outreach_1_vd
-				}
-			}
-			create_pop = {
-				species = $OWNER$.owner_main_species
+		while = {
+			count = $OWNER$.modifier:colony_start_num_pops_add
+			create_colony = {
+				owner = $OWNER$.owner_main_species
 			}
 		}
+	}
+}
+
+tec_evolved_planethab_arcology_texture_effect = {
+	switch = {
+		trigger = is_planet_class
+		pc_pd_barren_cold_hab = {
+			set_planet_entity = { entity = barren_cold_habitat_arcology_entity }
+		}
+		pc_pd_barren_hab = {
+			set_planet_entity = { entity = barren_habitat_arcology_entity }
+		}
+		pc_pd_frozen_hab = {
+			set_planet_entity = { entity = frozen_habitat_arcology_entity }
+		}
+		pc_pd_molten_hab = {
+			set_planet_entity = { entity = molten_habitat_arcology_entity }
+		}
+		pc_pd_toxic_hab = {
+			set_planet_entity = { entity = toxic_habitat_arcology_entity }
+		}
+		default = {}
+	}
+}
+
+tec_evolved_planethab_pd_arcology_patch_compat_effect = {
+	if = {
+		limit = { tec_pd_arc_present = yes }
+		tec_pd_arc_planet_entity_and_atomsphere_generic = yes
+		add_deposit = d_pd_industrial_sector
 	}
 }

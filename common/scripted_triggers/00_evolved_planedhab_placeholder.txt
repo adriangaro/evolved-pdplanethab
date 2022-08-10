@@ -1,0 +1,3 @@
+tec_pd_arc_present = {
+	always = no
+}
