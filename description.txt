@@ -5,6 +5,8 @@
 [*] Planetary Arcology Habitats have some new mechanics allowing them to clear the planetary blockers to allow the extension of the habitat for the purpose of encasing the planet. Requires terraforming technologies and some other thematic ones like "Deep Crust Engineering" or "Climate Control Network" .
 [*] If the Planetary Arcology Habitat is fully encased in arcology districts and there are no more blockers to remove, you can upgrade the planetary habitat finally to an Ecumenopolis using a decision. After all the planet is fully covered in domes and infrastructure, might as well go to the next level!
 [*] Planetary habitats now get automatically colonized if void dwellers.
+[*] Planetary Arcology Habitats now sport new textures created by Borsk, showing your progress in ecumenopolizing the habitat.
+[*] Compatibility with the PD Arcolgoies Patch for Evolved in setting textures to ecumenopolis in the last decisions.
 [/list]
 
 [h1]Motivation[/h1]
@@ -15,6 +17,13 @@ Stellaris Evolved has already internal support for Planetary Diversity, however 
 [*] Planetary Diversity and submods
 [*] Stellaris Evolved - Alpha
 [*] Stellaris Evolved + PD Planetary Habitats
+[/list]
+
+[h1]Contacts And Links[/h1]
+[list]
+[*] Discord: MrRoAdd#4232
+[*] Github: https://github.com/adriangaro/evolved-pdplanethab
+[*] Contributions, bug reports and fixes are appreciated!
 [/list]
 
 [h1]Thanks[/h1]
