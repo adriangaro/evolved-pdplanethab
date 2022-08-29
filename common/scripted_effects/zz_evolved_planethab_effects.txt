@@ -311,10 +311,13 @@ tec_void_dweller_auto_colonize = {
 				}
 			}
 		}
+		create_colony = {
+			owner = $OWNER$
+		}
 		while = {
 			count = $OWNER$.modifier:colony_start_num_pops_add
-			create_colony = {
-				owner = $OWNER$.owner_main_species
+			create_pop = {
+				species = $OWNER$.owner_main_species
 			}
 		}
 	}
