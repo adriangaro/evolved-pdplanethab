@@ -2,7 +2,6 @@
 [list]
 [*] Applies the habitat district changes from Stellaris Evolved to the habitats added by PD - Planetary Habitats.
 [*] Allows the planetary habitats to be upgraded to Habitat Arcologies using the "Arcology Project" ascension perk instead of the "Sidereal Arcologies".
-[*] Planetary Arcology Habitats have some new mechanics allowing them to clear the planetary blockers to allow the extension of the habitat for the purpose of encasing the planet. Requires terraforming technologies and some other thematic ones like "Deep Crust Engineering" or "Climate Control Network" .
 [*] If the Planetary Arcology Habitat is fully encased in arcology districts and there are no more blockers to remove, you can upgrade the planetary habitat finally to an Ecumenopolis using a decision. After all the planet is fully covered in domes and infrastructure, might as well go to the next level!
 [*] Planetary habitats now get automatically colonized if void dwellers.
 [*] Planetary Arcology Habitats now sport new textures created by Borsk, showing your progress in ecumenopolizing the habitat.

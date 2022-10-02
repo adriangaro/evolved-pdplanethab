@@ -11,5 +11,5 @@ dependencies={
 	"Planetary Diversity - Planetary Habitats"
 	"Stellaris Evolved - Alpha"
 }
-supported_version="3.4.5"
+supported_version="3.5.2"
 remote_file_id="2633731557"

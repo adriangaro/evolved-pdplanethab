@@ -589,7 +589,7 @@ decision_tec_pdplanethab_arcology_project_militarized = {
 			tec_pdplanethab_ensure_planet_size_end = yes
 
 			tec_ecu_deposits_handler_before = yes
-			clean_deposits = yes
+			clear_deposits = yes
 			tec_ecu_deposits_handler_after = yes
 
 			tec_ecu_planet_entity = yes
@@ -734,7 +734,7 @@ decision_tec_pdplanethab_arcology_project_admin = {
 			tec_pdplanethab_ensure_planet_size_end = yes
 
 			tec_ecu_deposits_handler_before = yes
-			clean_deposits = yes
+			clear_deposits = yes
 			tec_ecu_deposits_handler_after = yes
 			
 			tec_ecu_planet_entity = yes
@@ -853,7 +853,7 @@ decision_tec_pdplanethab_arcology_project_science = {
 
 
 			tec_ecu_deposits_handler_before = yes
-			clean_deposits = yes
+			clear_deposits = yes
 			tec_ecu_deposits_handler_after = yes
 
 			change_pc = pc_city
