@@ -240,29 +240,131 @@ tec_pdplanethab_clear_habitat_specific_data = {
 	remove_planet_flag = tec_arcology_habitat
 	remove_planet_flag = tec_civil_habitat
 	remove_planet_flag = tec_industrial_habitat
+	remove_planet_flag = pd_farming_hab
+	remove_planet_flag = pd_energy_hab
+	remove_planet_flag = pd_mining_hab
+	remove_planet_flag = pd_science_hab
 	
-	remove_modifier = tec_pm_arcology_habitat
-
-	remove_deposit = d_expanded_dome_system 
-	remove_deposit = d_expanded_dome_system
-	remove_deposit = d_expanded_dome_system_1
-	remove_deposit = d_expanded_dome_system_1
+	remove_modifier = pm_tec_arcology_habitat
 
 	if = {
 		limit = { 
-			has_modifier = engineered_habitat
+			has_modifier = pm_tec_engineered_habitat
 		}
-		remove_modifier = engineered_habitat
+		remove_modifier = pm_tec_engineered_habitat
 		add_modifier = {
-			modifier = engineered_weather
+			modifier = pm_tec_engineered_weather
 		}
 	}
-	remove_building = building_hab_system_capital
-	add_building = building_system_capital
+	# regular
+	if = {
+		limit = {
+			owner = {
+				is_fallen_empire = no 
+				is_gestalt = no
+			}
+		}
+		switch = {
+			trigger = has_building
+			building_hab_major_capital = {
+				remove_building = building_hab_major_capital
+				add_building = building_major_capital
+			}
+			building_hab_system_capital = {
+				remove_building = building_hab_system_capital
+				add_building = building_system_capital
+			}
+		}
+	}
+	# hive
+	else_if = {
+		limit = {
+			owner = {
+				is_fallen_empire = no 
+				is_hive_empire = yes
+				tec_is_biohive = no
+				tec_is_cybernetic_hive = No
+			}
+		}
+		switch = {
+			trigger = has_building
+			building_tec_hab_hive_major_capital = {
+				remove_building = building_tec_hab_hive_major_capital
+				add_building = building_hive_major_capital
+			}
+			building_tec_hab_hive_system_capital = {
+				remove_building = building_tec_hab_hive_system_capital
+				add_building = building_hive_system_capital
+			}
+		}
+	}
+	# biohive
+	else_if = {
+		limit = {
+			owner = {
+				tec_is_biohive = yes
+				is_fallen_empire = no 
+			}
+		}
+		switch = {
+			trigger = has_building
+			building_tec_hab_biohive_major_capital = {
+				remove_building = building_tec_hab_biohive_major_capital
+				add_building = building_tec_biohive_major_capital
+			}
+			building_tec_hab_biohive_system_capital = {
+				remove_building = building_tec_hab_biohive_system_capital
+				add_building = building_tec_biohive_system_capital
+			}
+		}
+	}
+	# cyberhive
+	else_if = {
+		limit = {
+			owner = {
+				tec_is_cybernetic_hive = yes
+				is_fallen_empire = no 
+			}
+		}
+		switch = {
+			trigger = has_building
+			building_tec_hab_cyberhive_major_capital = {
+				remove_building = building_tec_hab_cyberhive_major_capital
+				add_building = building_tec_cyberhive_major_capital
+			}
+			building_tec_hab_cyberhive_system_capital = {
+				remove_building = building_tec_hab_cyberhive_system_capital
+				add_building = building_tec_cyberhive_system_capital
+			}
+		}
+	}
+	# machine
+	else_if = {
+		limit = {
+			owner = {
+				is_machine_empire = yes
+				is_fallen_empire = no
+			}
+		}
+		switch = {
+			trigger = has_building
+			building_tec_hab_machine_major_capital = {
+				remove_building = building_tec_hab_machine_major_capital
+				add_building = building_tec_machine_major_capital
+			}
+			building_tec_hab_machine_system_capital = {
+				remove_building = building_tec_hab_machine_system_capital
+				add_building = building_tec_machine_system_capital
+			}
+		}
+	}
+	
+	validate_planet_buildings_and_districts = yes 
 }
 
 tec_pdplanethab_remove_terraforming_modifiers = {
 	remove_modifier = hab_terraforming_candidate
+	remove_modifier = hab_pdhabsubglacialocean
 	remove_modifier = pdterra_storm
 	remove_modifier = pdterra_tidallocked
 	remove_modifier = pdterra_glacio
@@ -281,10 +383,6 @@ tec_pdplanethab_remove_terraforming_modifiers = {
 	remove_modifier = pdterra_reef
 	remove_modifier = pdterra_coral
 	remove_modifier = pdterra_supercon
-	remove_modifier = terraforming_methane
-	remove_modifier = terraforming_ammonia
-	remove_modifier = terraforming_sulfur
-	remove_modifier = terraforming_ash
 }
 
 tec_ecu_faction_demands = {

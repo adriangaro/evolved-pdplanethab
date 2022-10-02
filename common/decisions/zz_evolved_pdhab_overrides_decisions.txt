@@ -2,83 +2,322 @@
 # Decisions
 ##########################################################################
 
-# Make Trade Moon
-decision_trademoonhab = {
-	icon = decision_trademoonhab
+# Advanced Habitat
+decision_upgrade_pd_habitat = {
 	owned_planets_only = yes
-	
-	#prerequisites = {
-	#	"tech_terrestrial_sculpting"		
-	#}
+	icon = decision_satellite_in_orbit
 
-	#enactment_time = 0
+	enactment_time = 720
 	resources = {
 		category = decisions
 		cost = {
-			energy = 250
+			alloys = 1000
 		}
 	}
-	
-	potential = { 
-		uses_district_set = pdplanethab
-		NOT = { has_planet_flag = pd_commercial_hab }
-		NOT = { has_planet_flag = pd_hab_d2 }
-		NOT = {
-			has_planet_flag = tec_arcology_habitat
+
+	potential = {
+		OR = {
+		is_planet_class = pc_pd_barren_cold_hab
+		is_planet_class = pc_pd_barren_hab
+		is_planet_class = pc_pd_frozen_hab
+		is_planet_class = pc_pd_gas_giant_hab
+		is_planet_class = pc_pd_hothouse_hab
+		is_planet_class = pc_pd_toxic_hab
+		is_planet_class = pc_pd_molten_hab
+		is_planet_class = pc_pd_asteroid_hab
 		}
-		owner = { is_gestalt = no }
+		NOT = { has_planet_flag = advanced_habitat }
+		exists = owner
+		owner = {
+			has_technology = tech_pdhabitat_1
+		}
+	}
+
+	allow = {
+		free_district_slots = 0
+		has_modifier = pdhablevel1
 	}
 
 	effect = {
-		custom_tooltip = decision_commercial_hab_effects_short
-		hidden_effect = {
-			set_planet_flag = pd_commercial_hab
-			IF = { limit = { NOT = { has_planet_flag = pd_hab_d1 } } set_planet_flag = pd_hab_d1 }
-			ELSE_IF = { limit = { has_planet_flag = pd_hab_d1 } set_planet_flag = pd_hab_d2 }
+		add_modifier = {
+			modifier = pdhablevel2
+			days = -1
 		}
-	}    
-	
-	ai_weight = { 
-		weight = 1
+		hidden_effect = {
+			remove_modifier = pdhablevel1
+			set_planet_flag = advanced_habitat
+		}
+	}
+
+	ai_weight = {
+		weight = 1000
 	}
 }
 
-# Make Military
-decision_milhab = {
-	icon = decision_milhab
+decision_upgrade_pd_habitat_2 = {
 	owned_planets_only = yes
-	
-	#prerequisites = {
-	#	"tech_terrestrial_sculpting"		
-	#}
+	icon = decision_satellite_in_orbit
 
-	enactment_time = 1
+	enactment_time = 1440
 	resources = {
 		category = decisions
 		cost = {
-			energy = 250
+			alloys = 1500
 		}
 	}
-	
-	potential = { 
-		uses_district_set = pdplanethab
-		NOT = { has_planet_flag = pd_hab_d2 }
-		NOT = { has_planet_flag = pd_mil_hab }
+
+	potential = {
+		OR = {
+		is_planet_class = pc_pd_barren_cold_hab
+		is_planet_class = pc_pd_barren_hab
+		is_planet_class = pc_pd_frozen_hab
+		is_planet_class = pc_pd_gas_giant_hab
+		is_planet_class = pc_pd_hothouse_hab
+		is_planet_class = pc_pd_toxic_hab
+		is_planet_class = pc_pd_molten_hab
+		is_planet_class = pc_pd_asteroid_hab
+		}
+		has_planet_flag = advanced_habitat
+		NOT = { has_planet_flag = advanced_habitat_2 }
+		exists = owner
+		owner = {
+			has_technology = tech_pdhabitat_2
+		}
+	}
+
+	allow = {
+		free_district_slots = 0
+		has_modifier = pdhablevel2
+		# has_building = building_hab_major_capital
+		has_major_upgraded_capital = yes
+	}
+
+	effect = {
+		add_modifier = {
+			modifier = pdhablevel3
+			days = -1
+		}
+		hidden_effect = {
+			remove_modifier = pdhablevel2
+			set_planet_flag = advanced_habitat_2
+		}
+	}
+
+	ai_weight = {
+		weight = 1000
+	}
+}
+
+
+# Resort Colony
+decision_resort_habitat = {
+	owned_planets_only = yes
+	icon = decision_resort_colony
+
+	prerequisites = {
+		"tech_resort_colonies"
+	}
+
+	resources = {
+		category = decisions
+		cost = {
+			unity = 1000
+		}
+	}
+
+	potential = {
+		is_capital = no
+		is_pd_habitat = yes
+		NOT = { is_planet_class = pc_pd_asteroid_hab }
+		NOT = { has_modifier = resort_colony_pd_hab }
+		NOT = { has_modifier = penal_habitat }
+		NOT = { has_modifier = slave_colony }
+		NOT = { has_modifier = military_pd_habitat_reg }
+		owner = {
+			is_regular_empire = yes
+		}
 		NOT = {
 			has_planet_flag = tec_arcology_habitat
 		}
 	}
 
-	effect = {
-		custom_tooltip = decision_mil_hab_effects_short
-		hidden_effect = {
-			set_planet_flag = pd_mil_hab
-			IF = { limit = { NOT = { has_planet_flag = pd_hab_d1 } } set_planet_flag = pd_hab_d1 }
-			ELSE_IF = { limit = { has_planet_flag = pd_hab_d1 } set_planet_flag = pd_hab_d2 }
+	allow = {
+		#planet_size >= 15
+		custom_tooltip = {
+			fail_text = decision_resort_colony_no_districts
+			num_districts = { type = any value < 1 }
+			num_buildings = { type = any value < 2 }
 		}
-	}    
-	
-	ai_weight = { 
-		weight = 1
+		custom_tooltip = {
+			fail_text = no_upgraded_capital_tooltip
+			has_building = building_hab_capital
+		}
+		custom_tooltip = {
+			fail_text = decision_resort_colony_only_one
+			NOT = {
+				owner = {
+					any_owned_planet = { has_modifier = resort_colony_pd_hab }
+				}
+			}
+		}
+	}
+
+	effect = {
+		add_modifier = {
+			modifier = resort_colony_pd_hab
+			days = -1
+		}
+		hidden_effect = {
+			remove_building = building_hab_capital
+			add_building = building_resort_capital
+		}
+		hidden_effect = { validate_planet_buildings_and_districts = yes }
+	}
+
+	ai_weight = {
+		weight = 0
 	}
 }
+
+# Penal Colony
+decision_penal_habitat = {
+	owned_planets_only = yes
+	icon = decision_penal_colony
+
+	prerequisites = {
+		"tech_penal_colonies"
+	}
+
+	resources = {
+		category = decisions
+		cost = {
+			unity = 1000
+		}
+	}
+
+	potential = {
+		is_capital = no
+		NOT = { has_modifier = resort_colony_pd_hab }
+		NOT = { has_modifier = slave_colony }
+		NOT = { has_modifier = military_pd_habitat_reg }
+		owner = {
+			is_regular_empire = yes
+		}
+		is_pd_habitat = yes
+		NOT = {
+			owner = {
+				any_owned_planet = { has_modifier = penal_habitat }
+			}
+		}
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_penal_habitat_no_districts
+			num_districts = { type = district_pdhab_cultural value < 1 }
+			num_districts = { type = district_pdhab_commercial value < 1 }
+			num_districts = { type = district_pdhab_science value < 1 }
+		}
+	}
+
+	effect = {
+		add_modifier = {
+			modifier = penal_habitat
+			days = -1
+		}
+		hidden_effect = { validate_planet_buildings_and_districts = yes }
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+
+# Military Colony
+decision_military_habitat = {
+	owned_planets_only = yes
+
+	prerequisites = {
+		"tech_military_habitats"
+	}
+
+
+	#enactment_time = 720
+	resources = {
+		category = decisions
+		cost = {
+			unity = 500
+			alloys = 500
+		}
+	}
+
+	potential = {
+		is_capital = no
+		exists = owner
+		is_pd_habitat = yes
+		#OR = {
+		#	is_planet_class = pc_pd_molten_hab
+		#	is_planet_class = pc_pd_barren_hab
+		#	is_planet_class = pc_pd_barren_cold_hab
+		#	is_planet_class = pc_pd_frozen_hab
+		#}
+		NOT = { has_modifier = resort_colony_pd_hab }
+		NOT = { has_modifier = penal_habitat }
+		NOT = { has_modifier = slave_colony }
+		NOT = { has_modifier = military_pd_habitat_reg }
+		NOT = { has_modifier = military_pd_habitat_ges }
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+
+	allow = {
+		#planet_size >= 15
+		custom_tooltip = {
+			fail_text = decision_military_habitat_no_districts
+			num_districts = { type = any value < 1 }
+		}
+	}
+
+	effect = {
+		IF = {
+			limit = {
+				owner = { is_gestalt = no }
+			}
+			add_modifier = {
+				modifier = military_pd_habitat_reg
+				days = -1
+			}
+
+		}
+		IF = {
+			limit = {
+				owner = { is_gestalt = yes }
+			}
+			add_modifier = {
+				modifier = military_pd_habitat_ges
+				days = -1
+			}
+
+		}
+		hidden_effect = { 
+			validate_planet_buildings_and_districts = yes
+			remove_modifier = pdhablevel1
+			IF = {
+				limit = { has_modifier = hab_terraforming_candidate }
+				remove_modifier = hab_terraforming_candidate
+				set_planet_flag = pdhab_terraforming_candidate_return
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+

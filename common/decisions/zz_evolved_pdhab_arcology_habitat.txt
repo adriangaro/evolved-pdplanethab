@@ -78,6 +78,14 @@ decision_tec_pdplanethab_arcology_civil = {
 			fail_text = decision_tec_hab_arcology_districts
 			free_district_slots = 0
 		}
+		custom_tooltip = {
+			fail_text = decision_tec_hab_arcology_special_habitat_block
+			NOT = { has_modifier = resort_colony }
+			NOT = { has_modifier = resort_colony_pd_hab }
+			NOT = { has_modifier = military_pd_habitat_reg }
+			NOT = { has_modifier = military_pd_habitat_ges }
+			NOT = { has_modifier = penal_habitat }
+		}
 	}
 
 	effect = {
@@ -89,7 +97,7 @@ decision_tec_pdplanethab_arcology_civil = {
 			set_planet_flag = tec_arcology_habitat
 			set_planet_flag = tec_civil_habitat
 			add_modifier = {
-				modifier = tec_pm_arcology_habitat
+				modifier = pm_tec_arcology_habitat
 				days = -1
 			}
 			tec_pdplanethab_remove_terraforming_modifiers = yes
@@ -120,6 +128,9 @@ decision_tec_pdplanethab_arcology_civil = {
 			tec_pdplanethab_clear_district = {
 				DISTRICT = district_pdhab_food
 			}
+			tec_pdplanethab_clear_district = {
+				DISTRICT = district_pdhab_food_unlimited
+			}
 
 			# energy conversion
 			if = {
@@ -136,10 +147,20 @@ decision_tec_pdplanethab_arcology_civil = {
 					DISTRICT2 = district_tec_hab_arcology_trade
 					DIVIDE = 2
 				}
+				tec_pdplanethab_convert_district = {
+					DISTRICT1 = district_pdhab_energy_unlimited
+					DISTRICT2 = district_tec_hab_arcology_trade
+					DIVIDE = 2
+				}
 			}
 			else = {
 				tec_pdplanethab_convert_district = {
 					DISTRICT1 = district_pdhab_energy
+					DISTRICT2 = district_tec_hab_arcology_maintenance
+					DIVIDE = 2
+				}
+				tec_pdplanethab_convert_district = {
+					DISTRICT1 = district_pdhab_energy_unlimited
 					DISTRICT2 = district_tec_hab_arcology_maintenance
 					DIVIDE = 2
 				}
@@ -149,10 +170,16 @@ decision_tec_pdplanethab_arcology_civil = {
 			tec_pdplanethab_clear_district = {
 				DISTRICT = district_pdhab_energy
 			}
+			tec_pdplanethab_clear_district = {
+				DISTRICT = district_pdhab_energy_unlimited
+			}
 
 			# mining conversion - no equivalent here
 			tec_pdplanethab_clear_district = {
 				DISTRICT = district_pdhab_mining
+			}
+			tec_pdplanethab_clear_district = {
+				DISTRICT = district_pdhab_mining_unlimited
 			}
 
 			# research conversion
@@ -188,17 +215,6 @@ decision_tec_pdplanethab_arcology_civil = {
 			
 			tec_pdplanethab_clear_district = {
 				DISTRICT = district_pdhab_cultural
-			}
-			
-			# military conversion
-			tec_pdplanethab_convert_district = {
-				DISTRICT1 = district_pdhab_mil
-				DISTRICT2 = district_tec_hab_arcology_research
-				DIVIDE = 2
-			}
-
-			tec_pdplanethab_clear_district = {
-				DISTRICT = district_pdhab_mil
 			}
 			
 			tec_pdplanethab_ensure_planet_size_end = yes
@@ -273,6 +289,14 @@ decision_tec_pdplanethab_arcology_industrial = {
 			fail_text = decision_tec_hab_arcology_districts
 			free_district_slots = 0
 		}
+		custom_tooltip = {
+			fail_text = decision_tec_hab_arcology_special_habitat_block
+			NOT = { has_modifier = resort_colony }
+			NOT = { has_modifier = resort_colony_pd_hab }
+			NOT = { has_modifier = military_pd_habitat_reg }
+			NOT = { has_modifier = military_pd_habitat_ges }
+			NOT = { has_modifier = penal_habitat }
+		}
 	}
 
 	effect = {
@@ -285,7 +309,7 @@ decision_tec_pdplanethab_arcology_industrial = {
 			set_planet_flag = tec_arcology_habitat
 			set_planet_flag = tec_industrial_habitat
 			add_modifier = {
-				modifier = tec_pm_arcology_habitat
+				modifier = pm_tec_arcology_habitat
 				days = -1
 			}
 			tec_pdplanethab_remove_terraforming_modifiers = yes
@@ -321,15 +345,29 @@ decision_tec_pdplanethab_arcology_industrial = {
 				DISTRICT2 = district_tec_hab_arcology_foundry
 				DIVIDE = 4
 			}
+			tec_pdplanethab_convert_district = {
+				DISTRICT1 = district_pdhab_food_unlimited
+				DISTRICT2 = district_tec_hab_arcology_foundry
+				DIVIDE = 4
+			}
 
 			tec_pdplanethab_convert_district = {
 				DISTRICT1 = district_pdhab_food
 				DISTRICT2 = district_tec_hab_arcology_industry
 				DIVIDE = 4
 			}
+			
+			tec_pdplanethab_convert_district = {
+				DISTRICT1 = district_pdhab_food_unlimited
+				DISTRICT2 = district_tec_hab_arcology_industry
+				DIVIDE = 4
+			}
 
 			tec_pdplanethab_clear_district = {
 				DISTRICT = district_pdhab_food
+			}
+			tec_pdplanethab_clear_district = {
+				DISTRICT = district_tec_hab_arcology_industry
 			}
 
 			# energy conversion
@@ -347,10 +385,20 @@ decision_tec_pdplanethab_arcology_industrial = {
 					DISTRICT2 = district_tec_hab_arcology_trade
 					DIVIDE = 2
 				}
+				tec_pdplanethab_convert_district = {
+					DISTRICT1 = district_pdhab_energy_unlimited
+					DISTRICT2 = district_tec_hab_arcology_trade
+					DIVIDE = 2
+				}
 			}
 			else = {
 				tec_pdplanethab_convert_district = {
 					DISTRICT1 = district_pdhab_energy
+					DISTRICT2 = district_tec_hab_arcology_maintenance
+					DIVIDE = 2
+				}
+				tec_pdplanethab_convert_district = {
+					DISTRICT1 = district_pdhab_energy_unlimited
 					DISTRICT2 = district_tec_hab_arcology_maintenance
 					DIVIDE = 2
 				}
@@ -359,6 +407,9 @@ decision_tec_pdplanethab_arcology_industrial = {
 			
 			tec_pdplanethab_clear_district = {
 				DISTRICT = district_pdhab_energy
+			}
+			tec_pdplanethab_clear_district = {
+				DISTRICT = district_pdhab_energy_unlimited
 			}
 
 			# mining conversion 
@@ -370,13 +421,27 @@ decision_tec_pdplanethab_arcology_industrial = {
 			}
 
 			tec_pdplanethab_convert_district = {
+				DISTRICT1 = district_pdhab_mining_unlimited
+				DISTRICT2 = district_tec_hab_arcology_foundry
+				DIVIDE = 4
+			}
+
+			tec_pdplanethab_convert_district = {
 				DISTRICT1 = district_pdhab_mining
+				DISTRICT2 = district_tec_hab_arcology_industry
+				DIVIDE = 4
+			}
+			tec_pdplanethab_convert_district = {
+				DISTRICT1 = district_pdhab_mining_unlimited
 				DISTRICT2 = district_tec_hab_arcology_industry
 				DIVIDE = 4
 			}
 
 			tec_pdplanethab_clear_district = {
 				DISTRICT = district_pdhab_mining
+			}
+			tec_pdplanethab_clear_district = {
+				DISTRICT = district_pdhab_mining_unlimited
 			}
 
 			# research conversion - no conversion
@@ -409,24 +474,7 @@ decision_tec_pdplanethab_arcology_industrial = {
 			tec_pdplanethab_clear_district = {
 				DISTRICT = district_pdhab_cultural
 			}
-			
-			# military conversion
-			tec_pdplanethab_convert_district = {
-				DISTRICT1 = district_pdhab_mil
-				DISTRICT2 = district_tec_hab_arcology_foundry
-				DIVIDE = 4
-			}
-
-			tec_pdplanethab_convert_district = {
-				DISTRICT1 = district_pdhab_mil
-				DISTRICT2 = district_tec_hab_arcology_industry
-				DIVIDE = 4
-			}
-
-			tec_pdplanethab_clear_district = {
-				DISTRICT = district_pdhab_mil
-			}
-			
+						
 			tec_pdplanethab_ensure_planet_size_end = yes
 			tec_evolved_planethab_arcology_texture_effect = yes
 		}
@@ -441,7 +489,7 @@ decision_tec_pdplanethab_arcology_project_militarized = {
 	owned_planets_only = yes
 	icon = decision_tec_military_ecu
 
-	enactment_time = 900 #3600 2700
+	enactment_time = 1800 #3600 2700
 	resources = {
 		category = decisions
 		cost = {
@@ -510,6 +558,7 @@ decision_tec_pdplanethab_arcology_project_militarized = {
 			tec_pdplanethab_clear_habitat_specific_data = yes
 			tec_pdplanethab_ensure_planet_size = yes
 
+			change_pc = pc_city
 			tec_pdplanethab_convert_housing_to_ecu_housing = yes
 			tec_pdplanethab_convert_leisure_to_ecu_leisure = yes
 
@@ -539,7 +588,10 @@ decision_tec_pdplanethab_arcology_project_militarized = {
 
 			tec_pdplanethab_ensure_planet_size_end = yes
 
-			change_pc = pc_city
+			tec_ecu_deposits_handler_before = yes
+			clean_deposits = yes
+			tec_ecu_deposits_handler_after = yes
+
 			tec_ecu_planet_entity = yes
 			tec_ecu_ecological_resolution = yes
 
@@ -556,7 +608,7 @@ decision_tec_pdplanethab_arcology_project_admin = {
 	owned_planets_only = yes
 	icon = decision_tec_administration_ecu
 
-	enactment_time = 900 #3600 2700
+	enactment_time = 1800 #3600 2700
 	resources = {
 		category = decisions
 		cost = {
@@ -627,6 +679,7 @@ decision_tec_pdplanethab_arcology_project_admin = {
 			tec_pdplanethab_clear_habitat_specific_data = yes
 			tec_pdplanethab_ensure_planet_size = yes
 
+			change_pc = pc_city
 			tec_pdplanethab_convert_housing_to_ecu_housing = yes
 			tec_pdplanethab_convert_leisure_to_ecu_leisure = yes
 
@@ -680,7 +733,10 @@ decision_tec_pdplanethab_arcology_project_admin = {
 
 			tec_pdplanethab_ensure_planet_size_end = yes
 
-			change_pc = pc_city
+			tec_ecu_deposits_handler_before = yes
+			clean_deposits = yes
+			tec_ecu_deposits_handler_after = yes
+			
 			tec_ecu_planet_entity = yes
 			tec_ecu_ecological_resolution = yes
 			tec_evolved_planethab_pd_arcology_patch_compat_effect = yes
@@ -696,7 +752,7 @@ decision_tec_pdplanethab_arcology_project_science = {
 	owned_planets_only = yes
 	icon = decision_tec_science_ecu
 
-	enactment_time = 900 #3600 2700
+	enactment_time = 1800 #3600 2700
 	resources = {
 		category = decisions
 		cost = {
@@ -765,6 +821,7 @@ decision_tec_pdplanethab_arcology_project_science = {
 			tec_pdplanethab_clear_habitat_specific_data = yes
 			tec_pdplanethab_ensure_planet_size = yes
 
+			change_pc = pc_city
 			tec_pdplanethab_convert_housing_to_ecu_housing = yes
 			tec_pdplanethab_convert_leisure_to_ecu_leisure = yes
 
@@ -793,6 +850,11 @@ decision_tec_pdplanethab_arcology_project_science = {
 			}
 
 			tec_pdplanethab_ensure_planet_size_end = yes
+
+
+			tec_ecu_deposits_handler_before = yes
+			clean_deposits = yes
+			tec_ecu_deposits_handler_after = yes
 
 			change_pc = pc_city
 			tec_ecu_planet_entity = yes

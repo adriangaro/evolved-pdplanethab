@@ -4,6 +4,7 @@
 district_pdhab_housing = {
 	base_buildtime = 240
 	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
 
 	show_on_uncolonized = {
 		uses_district_set = pdplanethab
@@ -19,6 +20,13 @@ district_pdhab_housing = {
 		NOT = {
 			has_planet_flag = tec_arcology_habitat
 		}
+	}
+
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = resort_colony_pd_hab }
+		NOT = { has_modifier = military_pd_habitat_reg }
+		NOT = { has_modifier = military_pd_habitat_ges }
 	}
 
 	conversion_ratio = 1
@@ -230,6 +238,9 @@ district_pdhab_industrial = {
 	
 	allow = {
 		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = resort_colony_pd_hab }
+		NOT = { has_modifier = military_pd_habitat_reg }
+		NOT = { has_modifier = military_pd_habitat_ges }
 	}
 
 	conversion_ratio = 1
@@ -879,14 +890,15 @@ district_pdhab_industrial = {
 	}
 }
 
-
-district_pdhab_food = {
+district_pdhab_food_unlimited = {
 	base_buildtime = 240
 	is_capped_by_modifier = no
 
 	show_on_uncolonized = {
 		uses_district_set = pdplanethab
 		has_planet_flag = pd_farming_hab
+		NOT = { has_modifier = hab_terraforming_candidate }
+		NOT = { has_modifier = hab_pdhabsubglacialocean }
 		NOT = {
 			has_planet_flag = tec_arcology_habitat
 		}
@@ -895,9 +907,194 @@ district_pdhab_food = {
 	potential = {
 		uses_district_set = pdplanethab
 		has_planet_flag = pd_farming_hab
+		NOT = { has_modifier = hab_terraforming_candidate }
+		NOT = { has_modifier = hab_pdhabsubglacialocean }
 		NOT = {
 			has_planet_flag = tec_arcology_habitat
 		}
+	}
+
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = resort_colony_pd_hab }
+		NOT = { has_modifier = military_pd_habitat_reg }
+		NOT = { has_modifier = military_pd_habitat_ges }
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_farming
+		district_farming_uncapped
+	}
+	
+	resources = {
+		category = planet_districts_hab_food
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}	
+		# Base production
+			produces = {
+				food = 1
+				multiplier = value:tec_automated_district_production|BASE|6|BASE_VALUE|tec_habitat_base_production|ECO_CAT|planet_farmers|RESOURCE|food|REQUISITON|has_produce_requisitorium|REQUISITION_AMOUNT|@requisitorium_food_reduction|
+			}
+		# /
+		# Resource production civic
+			produces = {
+				trigger = {
+					exists = owner
+					owner = {
+						tec_district_generate_basic_resources = yes
+					}
+				}
+				food = 2
+			}
+		# /		
+	}
+
+	overlord_resources = {
+		category = planet_requisitioned_food
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = has_produce_requisitorium
+				}
+			}
+			food = @requisitorium_food_overlord
+		}
+	}
+
+	# Indications
+	triggered_desc = {
+		trigger = {
+			planet = {
+				NOT = {
+					has_planet_flag = advanced_habitat_2
+				}
+			}
+		}
+		text = tec_upgradeable_district_habitat
+	}
+	triggered_desc = {
+		text = tec_building_affect_district_habitat
+	}
+		
+	# Housing
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+		mult = value:tec_habitat_district_housing
+	}
+
+	# Jobs
+	triggered_planet_modifier = {	#Regular
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		job_farmer_add = 1
+		mult = value:tec_habitat_job_count		
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		text = job_farmer_effect_desc
+	}
+
+	triggered_planet_modifier = {	# Fe
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		job_fe_acolyte_farm_add = 1
+		mult = value:tec_habitat_job_count	
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		text = job_fe_acolyte_farm_effect_desc
+	}
+
+	triggered_planet_modifier = {	# Gestalt
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		job_agri_drone_add = 1
+		mult = value:tec_habitat_job_count	
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		text = job_agri_drone_effect_desc
+	}
+
+	ai_resource_production = {
+		food = 2
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_pdhab_food = {
+	base_buildtime = 240
+	min_for_deposits_on_planet = 3
+	max_for_deposits_on_planet = 15
+
+	show_on_uncolonized = {
+		uses_district_set = pdplanethab
+		OR = {
+			has_modifier = hab_terraforming_candidate
+			has_modifier = hab_pdhabsubglacialocean
+		}
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+	
+	potential = {
+		uses_district_set = pdplanethab
+		OR = {
+			has_modifier = hab_terraforming_candidate
+			has_modifier = hab_pdhabsubglacialocean
+		}
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = resort_colony_pd_hab }
+		NOT = { has_modifier = military_pd_habitat_reg }
+		NOT = { has_modifier = military_pd_habitat_ges }
 	}
 
 	conversion_ratio = 1
@@ -1056,12 +1253,14 @@ district_pdhab_food = {
 	}
 }
 
-district_pdhab_energy = {
+district_pdhab_energy_unlimited = {
 	base_buildtime = 240
 	is_capped_by_modifier = no
 	
 	show_on_uncolonized = {
 		uses_district_set = pdplanethab
+		NOT = { has_modifier = hab_terraforming_candidate }
+		NOT = { has_modifier = hab_pdhabsubglacialocean }
 		OR = {
 			has_planet_flag = pd_energy_hab
 			AND = {
@@ -1076,6 +1275,8 @@ district_pdhab_energy = {
 
 	potential = {
 		uses_district_set = pdplanethab
+		NOT = { has_modifier = hab_terraforming_candidate }
+		NOT = { has_modifier = hab_pdhabsubglacialocean }
 		OR = {
 			has_planet_flag = pd_energy_hab
 			AND = {
@@ -1092,7 +1293,14 @@ district_pdhab_energy = {
 	convert_to = {
 		district_generator
 		district_generator_uncapped
-		district_pdhab_commercial
+		district_hab_commercial
+	}
+
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = resort_colony_pd_hab }
+		NOT = { has_modifier = military_pd_habitat_reg }
+		NOT = { has_modifier = military_pd_habitat_ges }
 	}
 
 	resources = {
@@ -1100,10 +1308,185 @@ district_pdhab_energy = {
 		cost = {
 			minerals = @hab_cost
 		}
-	#	upkeep = {
-	#		energy = @hab_maintenance
-	#	}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
 
+		# New production
+		produces = {
+			energy = 1
+			multiplier = value:tec_automated_district_production|BASE|6|BASE_VALUE|tec_habitat_base_production|ECO_CAT|planet_technician|RESOURCE|energy|REQUISITON|has_energy_requisitorium|REQUISITION_AMOUNT|@requisitorium_energy_reduction|
+		}
+		# /
+		# Resource production civic
+			produces = {
+				trigger = {
+					exists = owner
+					owner = {
+						tec_district_generate_basic_resources = yes
+					}
+				}
+				energy = 2
+			}
+		# /	
+	}
+
+	overlord_resources = {
+		category = planet_requisitioned_energy
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = has_energy_requisitorium
+				}
+			}
+			energy = @requisitorium_energy_overlord
+		}
+	}
+
+	# Indications
+	triggered_desc = {
+		trigger = {
+			planet = {
+				NOT = {
+					has_planet_flag = advanced_habitat_2
+				}
+			}
+		}
+		text = tec_upgradeable_district_habitat
+	}
+	triggered_desc = {
+		text = tec_building_affect_district_habitat
+	}
+		
+	# Housing
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+		mult = value:tec_habitat_district_housing
+	}
+
+	# Jobs
+	triggered_planet_modifier = {	#Regular
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		job_technician_add = 1
+		mult = value:tec_habitat_job_count		
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		text = job_technician_effect_desc
+	}
+
+	triggered_planet_modifier = {	# Fe
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		job_fe_acolyte_generator_add = 1
+		mult = value:tec_habitat_job_count	
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		text = job_fe_acolyte_generator_effect_desc
+	}
+
+	triggered_planet_modifier = {	# Gestalt
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		job_technician_drone_add = 1
+		mult = value:tec_habitat_job_count	
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		text = job_technician_drone_effect_desc
+	}
+
+	ai_resource_production = {
+		energy = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_pdhab_energy = {
+	base_buildtime = 240
+
+	min_for_deposits_on_planet = 3
+	max_for_deposits_on_planet = 15
+	
+	show_on_uncolonized = {
+		uses_district_set = pdplanethab
+		OR = {
+			has_modifier = hab_terraforming_candidate
+			has_modifier = hab_pdhabsubglacialocean
+		}
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+
+	potential = {
+		uses_district_set = pdplanethab
+		OR = {
+			has_modifier = hab_terraforming_candidate
+			has_modifier = hab_pdhabsubglacialocean
+		}
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = resort_colony_pd_hab }
+		NOT = { has_modifier = military_pd_habitat_reg }
+		NOT = { has_modifier = military_pd_habitat_ges }
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_generator
+		district_generator_uncapped
+	}
+
+	resources = {
+		category = planet_districts_hab_energy
+		cost = {
+			minerals = @hab_cost
+		}
 		# New production
 		produces = {
 			energy = 1
@@ -1244,14 +1627,17 @@ district_pdhab_energy = {
 	}
 }
 
-
-district_pdhab_mining = {
+district_pdhab_mining_unlimited = {
 	base_buildtime = 240
 	is_capped_by_modifier = no
 
 	show_on_uncolonized = {
 		uses_district_set = pdplanethab
 		has_planet_flag = pd_mining_hab
+		NOT = { has_modifier = hab_terraforming_candidate }
+		NOT = { has_modifier = hab_pdhabsubglacialocean }
+
+		
 		NOT = {
 			has_planet_flag = tec_arcology_habitat
 		}
@@ -1260,9 +1646,205 @@ district_pdhab_mining = {
 	potential = {
 		uses_district_set = pdplanethab
 		has_planet_flag = pd_mining_hab
+		NOT = { has_modifier = hab_terraforming_candidate }
+		NOT = { has_modifier = hab_pdhabsubglacialocean }
+
+		
 		NOT = {
 			has_planet_flag = tec_arcology_habitat
 		}
+	}
+
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = resort_colony_pd_hab }
+		NOT = { has_modifier = military_pd_habitat_reg }
+		NOT = { has_modifier = military_pd_habitat_ges }
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_mining
+		district_mining_uncapped
+	}	
+	
+	resources = {
+		category = planet_districts_hab_mining
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}		
+		# New production
+			produces = {
+				minerals = 1
+				multiplier = value:tec_automated_district_production|BASE|6|BASE_VALUE|tec_habitat_base_production|ECO_CAT|planet_miners|RESOURCE|minerals|REQUISITON|has_material_requisitorium|REQUISITION_AMOUNT|@requisitorium_minerals_reduction|
+			}
+		# /
+		# Resource production civic
+			produces = {
+				trigger = {
+					exists = owner
+					owner = {
+						tec_district_generate_basic_resources = yes
+					}
+				}
+				minerals = 2
+			}
+		# /	
+	}
+
+	overlord_resources = {
+		category = planet_requisitioned_minerals
+		produces = {
+			trigger = {
+				planet = {
+					has_planet_flag = has_material_requisitorium
+				}
+			}
+			minerals = @requisitorium_minerals_overlord
+		}
+	}
+
+	# Indications
+	triggered_desc = {
+		trigger = {
+			planet = {
+				NOT = {
+					has_planet_flag = advanced_habitat_2
+				}
+			}
+		}
+		text = tec_upgradeable_district_habitat
+	}
+	triggered_desc = {
+		text = tec_building_affect_district_habitat
+	}
+
+
+	# Housing
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		planet_housing_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				has_planet_flag = advanced_habitat_2
+			}
+		}
+		planet_housing_add = 1
+	}
+
+	# Jobs
+	triggered_planet_modifier = {	#Regular
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		job_miner_add = 1
+		mult = value:tec_habitat_job_count		
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		text = job_miner_effect_desc
+	}
+
+	triggered_planet_modifier = {	# Fe
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		job_fe_acolyte_mine_add = 1
+		mult = value:tec_habitat_job_count	
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		text = job_fe_acolyte_mine_effect_desc
+	}
+
+	triggered_planet_modifier = {	# Gestalt
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		job_mining_drone_add = 1
+		mult = value:tec_habitat_job_count	
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+			planet = {
+				has_planet_flag = advanced_habitat
+			}
+		}
+		text = job_mining_drone_effect_desc
+	}
+
+	ai_resource_production = {
+		minerals = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_pdhab_mining = {
+	base_buildtime = 240
+	min_for_deposits_on_planet = 5
+	max_for_deposits_on_planet = 15
+
+	show_on_uncolonized = {
+		uses_district_set = pdplanethab
+		OR = {
+			has_modifier = hab_terraforming_candidate
+			has_modifier = hab_pdhabsubglacialocean
+		}
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+	
+	potential = {
+		uses_district_set = pdplanethab
+		OR = {
+			has_modifier = hab_terraforming_candidate
+			has_modifier = hab_pdhabsubglacialocean
+		}
+		NOT = {
+			has_planet_flag = tec_arcology_habitat
+		}
+	}
+
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = resort_colony_pd_hab }
+		NOT = { has_modifier = military_pd_habitat_reg }
+		NOT = { has_modifier = military_pd_habitat_ges }
 	}
 
 	conversion_ratio = 1
@@ -1426,6 +2008,8 @@ district_pdhab_science = {
 	show_on_uncolonized = {
 		uses_district_set = pdplanethab
 		has_planet_flag = pd_science_hab
+		NOT = { has_modifier = hab_terraforming_candidate }
+		NOT = { has_modifier = hab_pdhabsubglacialocean }
 		NOT = {
 			has_planet_flag = tec_arcology_habitat
 		}
@@ -1434,9 +2018,19 @@ district_pdhab_science = {
 	potential = {
 		uses_district_set = pdplanethab
 		has_planet_flag = pd_science_hab
+		NOT = { has_modifier = hab_terraforming_candidate }
+		NOT = { has_modifier = hab_pdhabsubglacialocean }
 		NOT = {
 			has_planet_flag = tec_arcology_habitat
 		}
+	}
+
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = resort_colony_pd_hab }
+		NOT = { has_modifier = penal_habitat }
+		NOT = { has_modifier = military_pd_habitat_reg }
+		NOT = { has_modifier = military_pd_habitat_ges }
 	}
 
 	conversion_ratio = 0.5
@@ -1606,7 +2200,8 @@ district_pdhab_commercial = {
 	
 	show_on_uncolonized = {
 		uses_district_set = pdplanethab
-		has_planet_flag = pd_commercial_hab
+		NOT = { has_modifier = hab_terraforming_candidate }
+		NOT = { has_modifier = hab_pdhabsubglacialocean }
 
 		exists = from
 		from = { 
@@ -1619,7 +2214,8 @@ district_pdhab_commercial = {
 	
 	potential = {
 		uses_district_set = pdplanethab
-		has_planet_flag = pd_commercial_hab
+		NOT = { has_modifier = hab_terraforming_candidate }
+		NOT = { has_modifier = hab_pdhabsubglacialocean }
 
 		exists = owner
 		owner = { 
@@ -1628,6 +2224,14 @@ district_pdhab_commercial = {
 		NOT = {
 			has_planet_flag = tec_arcology_habitat
 		}
+	}
+
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = resort_colony_pd_hab }
+		NOT = { has_modifier = penal_habitat }
+		NOT = { has_modifier = military_pd_habitat_reg }
+		NOT = { has_modifier = military_pd_habitat_ges }
 	}
 
 	conversion_ratio = 0.5
@@ -1763,6 +2367,8 @@ district_pdhab_cultural = {
 	show_on_uncolonized = {
 		uses_district_set = pdplanethab
 
+		NOT = { has_modifier = hab_terraforming_candidate }
+		NOT = { has_modifier = hab_pdhabsubglacialocean }
 		exists = from
 		from = {
 			OR = {
@@ -1778,6 +2384,8 @@ district_pdhab_cultural = {
 	potential = {
 		uses_district_set = pdplanethab
 
+		NOT = { has_modifier = hab_terraforming_candidate }
+		NOT = { has_modifier = hab_pdhabsubglacialocean }
 		exists = owner
 		owner = {
 			OR = {
@@ -1788,6 +2396,14 @@ district_pdhab_cultural = {
 		NOT = {
 			has_planet_flag = tec_arcology_habitat
 		}
+	}
+
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = resort_colony_pd_hab }
+		NOT = { has_modifier = penal_habitat }
+		NOT = { has_modifier = military_pd_habitat_reg }
+		NOT = { has_modifier = military_pd_habitat_ges }
 	}
 
 	conversion_ratio = 0.5
@@ -1901,99 +2517,6 @@ district_pdhab_cultural = {
 		trigger = {
 			always = yes
 		}
-	}
-}
-
-district_pdhab_mil = {
-	base_buildtime = 240
-	is_capped_by_modifier = no
-
-	show_on_uncolonized = {
-		uses_district_set = pdplanethab
-		has_planet_flag = pd_mil_hab
-		NOT = {
-			has_planet_flag = tec_arcology_habitat
-		}
-	}
-	
-	potential = {
-		uses_district_set = pdplanethab
-		has_planet_flag = pd_mil_hab
-		NOT = {
-			has_planet_flag = tec_arcology_habitat
-		}
-	}
-
-	conversion_ratio = 0.5
-	convert_to = {
-		district_tec_hab_arcology_industry
-		district_tec_hab_arcology_foundry
-		district_tec_hab_arcology_research
-	}
-	
-	planet_modifier = {
-		planet_housing_add = 2
-	}
-	
-	resources = {
-		category = planet_districts_hab_mining
-		cost = {
-			minerals = @hab_cost
-		}
-		upkeep = {
-			energy = @hab_maintenance
-		}		
-	}
-		
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_hive_empire = yes }
-		}
-		modifier = {
-			job_warrior_drone_add = 2
-		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_machine_empire = yes }
-		}
-		modifier = {
-			job_warrior_drone_add = 2
-		}
-	}	
-		
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { 
-				is_gestalt = no
-				is_fallen_empire_spiritualist = no
-			}
-		}
-		modifier = {
-			job_soldier_add = 2
-		}
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = job_warrior_drone_effect_desc
-	}
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { 
-				is_gestalt = no
-				is_fallen_empire_spiritualist = no
-			}
-		}
-		text = job_soldier_effect_desc
 	}
 }
 
